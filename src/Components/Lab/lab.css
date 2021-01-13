@@ -1,0 +1,73 @@
+.page{
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background:linear-gradient(170deg, #1C6B85 40%, #071013 91.17%), #F4F6F6;
+    display: flex;
+}
+/*Header*/
+.lab-header{
+    background-color: #11323e9b;
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 7px;
+    height: 100vh;
+    border-right: 1.5px solid #c6c6c6;
+}
+
+
+.lab-header-logo{
+    height: 60px;
+    margin-top: 1.7rem;
+}
+
+
+.lab-default-pic{
+    width: 60px;
+    height: 60px;
+    border: 2px solid #ff9505;
+    border-radius: 50px;
+    padding: 0px;
+}
+.lower-nav-container{
+    text-align: left;
+    margin-bottom:1rem;
+}
+
+#home{
+    margin-top: 0px;
+}
+#home:hover{
+    color: #ff9505;
+    cursor: pointer;
+}
+.songList-container{
+    display: flex;
+    flex-direction: column;
+    border-top:1px solid #c6c6c6;
+    border-bottom:1px solid #c6c6c6;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.songList-container::-webkit-scrollbar{
+    display: none;
+}
+
+
+.active-nav{
+    color: #ff9505;
+}
+.song-list-nav{
+    color: #c6c6c6;
+    text-align: left;
+}
+.song-list-nav:hover{
+    color: #ff9505;
+    cursor: pointer;
+}

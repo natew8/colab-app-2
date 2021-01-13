@@ -1,0 +1,7 @@
+.deets-view{
+    position: relative;
+    background-color: #e6e6e6;
+    height: 45.5vh;
+    padding: .5rem;
+    display: flex;
+}

@@ -1,0 +1,23 @@
+.hub-view{
+    position: relative;
+    background-color: #e6e6e6;
+    height: 45.5vh;
+    padding: .5rem;
+    display: flex;
+}
+
+#view-outline{
+border: 2px solid #c6c6c6;
+border-radius: 3px;
+padding: .6rem 1rem;
+background-color: #f4f6f6;
+display: flex;
+width: 100%;
+}
+
+.dividing-line{
+    height: 100%;
+    border-left: 2px solid #071013;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}

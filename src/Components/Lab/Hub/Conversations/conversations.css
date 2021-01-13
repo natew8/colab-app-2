@@ -1,0 +1,140 @@
+
+
+.conversations-container{
+    position: relative;
+    border: 2px solid #071013;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    /* margin-left: 3.4rem; */
+    width: 18rem;
+    height: 99.4%;
+    padding: 0px .6rem;
+    box-shadow: 2px 1px 7px #071013;
+}
+
+.conversations-container::-webkit-scrollbar{
+    display: none;
+}
+.con-header{
+    position: sticky;
+    top: 0px;
+    margin: 0px 0px .6rem;
+    padding: .6rem 0px;
+    border-bottom: 2px solid #071013;
+    color: #071013;
+    font-size: 1.4rem;
+    margin-left: -.6rem;
+    margin-right: -.6rem;
+    background-color: #ff9505;
+    line-height: 5px;
+}
+.con-container{
+    display: flex;
+    align-items: center;
+    padding: 5px .6rem;
+    border: 1px solid #c6c6c6;
+    border-radius: 5px;
+    margin-bottom: .6rem;
+}
+.con-container:hover{
+    background-color: #dadada;
+    cursor: pointer;
+}
+.con-date-title{
+    width: 100%;
+}
+.con-profile-pic{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #071013;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+
+.con-subject-line{
+    font-weight: 500;
+    text-align: left;
+    margin: 0px 0px -10px;
+}
+.con-body-sample{
+    text-align: left;
+    height: 1rem;
+    overflow:hidden;
+    width: 100%;
+}
+.con-date{
+    margin: 0px;
+    text-align: left;
+    color: blue;
+    font-weight: bold;
+    font-size: .8rem;
+}
+.con-footer{
+    position: sticky;
+    bottom: 0px;
+    padding: 10px 0px;
+    height: 1.5rem;
+    margin-left: -.6rem;
+    margin-right: -.6rem;
+    background-color: #071013;
+    z-index: 9000;
+}
+.new-convo-button{
+    width: 4rem;
+    height: 1.5rem;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: none;
+    border-radius: 3px;
+    text-transform: lowercase;
+    text-align: center;
+}
+
+.exit-new-convo{
+    height: 1rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-right: .6rem;
+    font-size: 1.5rem;
+    margin-left: auto;
+    box-shadow: none;
+    text-align: right;
+}
+.new-con-form{
+    height: 100%;
+}
+label{
+    color: #071013;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+
+.post-button{
+    height: 2rem;
+    width: 5rem;
+    padding: 0px;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: none;
+    border: 2px solid #071013;
+}
+
+.post-button:hover{
+    box-shadow: none;
+}
+
+
+.con-body-input{
+    height: 4rem;
+    resize: none;
+}

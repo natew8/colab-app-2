@@ -1,0 +1,83 @@
+.new-project-container{
+    position: absolute;
+    top: 4rem;
+    right: 15px;
+    width: 1055px;
+    background-color: #f4f6f6;
+    margin-left: auto;
+    border-radius: 3px 3px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 3px 7px #071013;
+    overflow:hidden;
+    padding: 0px 0px 1rem 0px;
+}
+
+.inputs-container{
+    margin: auto;
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid #c6c6c6;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+    padding: 0px 4rem;
+}
+.new-input-box{
+    display: flex;
+    align-items: center;
+}
+.new-label{
+    text-align: left;
+}
+.date-container{
+    display: flex;
+    align-items: center;
+}
+.date-input{
+    height: 1.5rem;
+    width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.date-input-year{
+    margin-left: 5px;
+    height: 1.5rem;
+    width: 30px;
+}
+.new-project-input{
+    width: 15rem;
+    margin-left: 1rem;
+    height: 1.5rem;
+}
+.new-project-input:focus{
+    width: 15rem;
+    margin-left: 1rem;
+    outline: 1px solid #ff9505;
+}
+
+.next-button{
+    margin: auto;
+    /* margin-top: 1rem; */
+    height: 2rem;
+    box-shadow: none;
+}
+.next-button:hover{
+    background-color: #ff9505;
+    box-shadow: none;
+    border: 2px solid #071013;
+}
+
+.create-project-button{
+    margin: auto;
+    /* margin-top: 1rem; */
+    height: 2rem;
+    box-shadow: none;
+}
+.create-project-button:hover{
+    background-color: #ff9505;
+    box-shadow: none;
+    border: 2px solid #071013;
+}

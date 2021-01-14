@@ -36,11 +36,13 @@ module.exports = {
 
     addSongVersion: async (req, res) => {
         const db = req.app.get('db')
+        console.log('hit3', req.body, req.params)
         const { song_id } = req.params
         const { title, url } = req.body
         const { id } = req.session.user
         try {
             const [version] = await db.songs.add_song_version([song_id, id, title, url])
+            console.log('hit4')
             res.status(200).send(version)
         } catch (err) {
             res.status(500).send(err)

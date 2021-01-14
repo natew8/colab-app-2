@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import { CircleLoader } from 'react-spinners'
 import axios from 'axios'
 import { v4 as randomString } from 'uuid'
 import './versions.css'
@@ -9,6 +10,8 @@ function Versions(props) {
     const [isUploading, setIsUploading] = useState(false)
     const [url, setUrl] = useState('')
     const [title, setTitle] = useState('')
+    const [error, setError] = useState(false)
+
 
     useEffect(() => {
 
@@ -22,6 +25,7 @@ function Versions(props) {
         setNewUpload(false)
         setTitle('')
         setUrl('')
+        setError(false)
     }
     function getSignedRequest([file]) {
         setIsUploading(true)
@@ -47,6 +51,7 @@ function Versions(props) {
             }
         }
         axios.put(signedRequest, file, options).then(res => {
+            console.log('hit2')
             setUrl(res.url)
             axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url }).then(ver => {
                 setIsUploading(false)
@@ -55,7 +60,9 @@ function Versions(props) {
                 console.log(err)
             })
         }).catch(err => {
-            console.log(err)
+            console.log(err.response)
+            setError(true)
+            setIsUploading(false)
         })
     }
 
@@ -65,21 +72,27 @@ function Versions(props) {
             <h4 className='version-header'>Song Files</h4>
             {newUpload ?
                 <div className='version-loading-container'>
-                    {isUploading ? <h1>Loading... </h1> : <h3 className='version-title-header'>Song Title...</h3>}
-                    <input className='version-title-input' onChange={(e) => goNext(e.target.value)} value={title} type='text' placeholder='Filename' />
-                    {title !== '' ?
-                        <label className='upload-input-label' for='version-upload-input'>
-                            File for upload...
-                            <input
-                                id='version-upload-input'
-                                multiple
-                                onChange={(e) => getSignedRequest(e.target.files)}
-                                type='file'
-                                accept='audio/*'
-                                capture='file' />
-                        </label>
+                    {isUploading ?
+                        <CircleLoader />
                         :
-                        null
+                        <>
+                            <h3 className='version-title-header'>Song Title...</h3>
+                            <input className='version-title-input' onChange={(e) => goNext(e.target.value)} value={title} type='text' placeholder='Filename' />
+                            {title !== '' ?
+                                <label className='upload-input-label' htmlFor='version-upload-input'>
+                                    File for upload...
+                            <input
+                                        id='version-upload-input'
+                                        multiple
+                                        onChange={(e) => getSignedRequest(e.target.files)}
+                                        type='file'
+                                        accept='audio/*'
+                                        capture='file' />
+                                </label>
+                                :
+                                null
+                            }
+                        </>
                     }
                 </div>
                 :
@@ -93,6 +106,7 @@ function Versions(props) {
                     }
                 </div>
             }
+            {error ? <h1>Upload failed, please try again.</h1> : null}
             <div className='version-footer'>
                 {!newUpload ?
                     <button

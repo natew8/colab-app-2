@@ -15,7 +15,7 @@ module.exports = {
         const s3Params = {
             Bucket: S3_BUCKET,
             Key: fileName,
-            Expires: 60,
+            Expires: 300,
             ContentType: fileType,
             ACL: 'public-read',
         };
@@ -25,6 +25,7 @@ module.exports = {
                 console.log(err);
                 return res.end();
             }
+            console.log('hit1')
             const returnData = {
                 signedRequest: data,
                 url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`,

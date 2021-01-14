@@ -8,7 +8,7 @@ class Waveform extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentTrack: 'https://colab-user-song-version.s3-us-west-1.amazonaws.com/85617abb-9170-4e98-8627-e1844ab73a68-Moment-(Acoustic-Version).mp3',
+            currentTrack: 'https://colab-user-song-version.s3-us-west-1.amazonaws.com/b498abb2-6eca-4eac-88e6-89e52f8db9f3-Moment-(Acoustic-Version).mp3',
             play: false,
             currentTime: 0,
             volume: .8

@@ -1,15 +1,17 @@
 .versions-container{
+    position: relative;
     border: 2px solid #071013;
     border-radius: 3px;
-    width: 16.5rem;
-    box-shadow: 2px 1px 7px #071013;
-
+    width: 16.7rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .version-header{
     position: sticky;
     top: 0px;
-    margin: 0px 0px .6rem;
+    margin: 0px;
     padding: .6rem 0px;
     border-bottom: 3px solid #071013;
     color: #ff9505;
@@ -18,3 +20,49 @@
     background-color: #071013;
     line-height: 5px;
 }
+
+.version-loading-container{
+    padding: .6rem;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.version-footer{
+    position: sticky;
+    bottom: 0px;
+    margin: 0px;
+    padding: 10px 0px;
+    background-color: #071013;
+    color: #f4f6f6;
+    font-size: 1.3rem;
+    text-transform: lowercase;
+}
+
+.new-version-button{
+    margin: 0px;
+    height: 1.5rem;
+    width: 5rem;
+    padding: 0px 5px;
+    border: none;
+}
+.upload-input-label{
+    font-size: 1rem;
+    text-align: center;
+}
+#version-upload-input{
+    padding: 0px;
+    margin: .6rem 0px;
+    height: fit-content;
+    border: none;
+}
+
+.version-title-header{
+    margin: 0px;
+}
+
+.version-title-input{
+    margin: 0px;
+    margin-bottom: .6rem;
+}
+

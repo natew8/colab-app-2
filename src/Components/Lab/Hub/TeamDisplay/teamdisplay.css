@@ -8,7 +8,6 @@
     width: 15rem;
     height: 99.4%;
     padding: 0px .6rem;
-    box-shadow: 2px 1px 7px #071013;
 }
 .project-team-container::-webkit-scrollbar{
     display: none;

@@ -18,7 +18,8 @@ function TeamDisplay() {
             <div className='team-list-item'>
                 <img
                     className={element.profile_pic ? 'team-profile-pic' : 'team-default-pic'}
-                    src={element.profile_pic ? element.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} />
+                    src={element.profile_pic ? element.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'}
+                    alt='user' />
                 <h3 className='team-display-username'>{element.username}</h3>
                 {/* <img className='message-icon' src={messageIcon} alt='message' /> */}
             </div>

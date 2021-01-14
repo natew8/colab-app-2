@@ -30,15 +30,15 @@ function Lab(props) {
     }
     const mappedSongList = songList.map((element, index) => {
         return (
-            <h2 className='song-list-nav'>
-                <NavLink exact={true} style={{ textDecoration: 'none' }} to={`/user/profile/Lab/${element.id}/${props.match.params.project_id}`} activeClassName='active-nav'>
+            <h2 key={element.id} className='song-list-nav'>
+                <NavLink className='song-list-nav' exact={true} style={{ textDecoration: 'none' }} to={`/user/profile/Lab/${element.id}/${props.match.params.project_id}`} activeClassName='active-nav'>
                     {element.song_title}
                 </NavLink>
             </h2>
         )
     })
     return (
-        <React.Fragment className='page'>
+        <span className='page'>
             <div className='page'>
                 <header className='lab-header'>
                     <img className='lab-header-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabAlogo.png' alt='Logo' />
@@ -56,7 +56,7 @@ function Lab(props) {
                 <div className='audio-control-container-2' />
                 <LabView />
             </div>
-        </React.Fragment>
+        </span>
     )
 }
 

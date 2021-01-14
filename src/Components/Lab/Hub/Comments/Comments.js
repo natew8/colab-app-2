@@ -26,6 +26,7 @@ function Comments(props) {
             setDate(res.data.convo_created)
             setProfilePic(res.data.profilePic)
             setUser(res.data.username)
+            setComment('')
             // axios.get(`/api/project/song/conversation/comments/${props.convoId}`).then(com => {
             //     setComments(com.data)
             // })
@@ -42,7 +43,7 @@ function Comments(props) {
         axios.post(`/api/project/song/conversation/newComment/${props.convoId}`, { comment }).then(newCom => {
             console.log(newCom.data)
             setComment('')
-            setComments([...comments, newCom.data])
+            setComments(newCom.data)
         })
 
     }
@@ -54,7 +55,7 @@ function Comments(props) {
                 <div className='content-box'>
                     <div className='info-box'>
                         <h4 className='comment-user-info'>{comment.username}</h4>
-                        <h4 className='comment-user-info'>{moment(comment.date_created).format('L')}</h4>
+                        <h4 className='comment-user-info-date'>{moment(comment.date_created).format('L')}</h4>
                     </div>
                     <p className='body-body'>{comment.comment}</p>
                 </div>
@@ -75,7 +76,7 @@ function Comments(props) {
                 <div className='content-box'>
                     <div className='info-box'>
                         <h4 className='comment-user-info'>{user}</h4>
-                        <h4 className='comment-user-info'>{moment(date).format('L')}</h4>
+                        <h4 className='comment-user-info-date'>{moment(date).format('L')}</h4>
                     </div>
                     <p className='body-body'>{body}</p>
                 </div>

@@ -40,7 +40,7 @@ function Conversations(props) {
     }
     const mappedConvo = conversations.map((convo, index) => {
         return (
-            <div onClick={() => setConvoId(convo.id)} className='con-container'>
+            <div key={convo.id} onClick={() => setConvoId(convo.id)} className='con-container'>
                 <img className='con-profile-pic' src={convo.profile_pic ? convo.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='User' />
                 <div className='con-date-title'>
                     <h3 className='con-subject-line'>{convo.subject_line}</h3>
@@ -61,20 +61,18 @@ function Conversations(props) {
                         <input onChange={(e) => setSubject(e.target.value)} type='text' placeholder='Subject Line' />
                         <label>Song time</label>
                         <input onChange={(e) => setTime(e.target.value)} maxLength='4' value={time} type='text' />
-                        <input onChange={(e) => setSong_Version(e.target.value)} list='version-list' />
-                        <datalist id='version-list'>
-                            <option value='Song-Version 1' />
-                            <option value='Song-Version 2' />
-                            <option value='Song-Version 3' />
-                        </datalist>
+                        <input list='version-list' />
+                        <select value={song_version} onChange={(e) => setSong_Version(e.target.value)} id='version-list'>
+                            {''}
+                        </select>
                         <label>body</label>
                         <textarea onChange={(e) => setBody(e.target.value)} className='con-body-input' type='paragraph' placeholder='Message' />
                         <button onClick={() => postConvo()} className='post-button'>Post</button>
                     </form>
                     :
-                    <React.Fragment>
+                    <div className='mapped-conversations'>
                         {mappedConvo}
-                    </React.Fragment>
+                    </div>
                 }
                 <div className='con-footer'>
                     {!newConvo ?

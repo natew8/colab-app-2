@@ -43,9 +43,9 @@ function EditProfile(props) {
         })
     }
 
-    function exitEmailEdit() {
-        setEmail()
-    }
+    // function exitEmailEdit() {
+    //     setEmail()
+    // }
 
 
     return (
@@ -78,7 +78,7 @@ function EditProfile(props) {
                             }
                             {editEmail ?
                                 <div className='input-and-exit'>
-                                    <h4 onClick={() => setEditEmail(false)}>&#10006;</h4>
+                                    <h4 className='cancel-x' onClick={() => setEditEmail(false)}>&#10006;</h4>
                                 </div>
                                 : <h4 className='edit-on-click' onClick={() => setEditEmail(true)}>Edit</h4>}
                         </div>
@@ -91,7 +91,7 @@ function EditProfile(props) {
                             }
                             {editUsername ?
                                 <div className='input-and-exit'>
-                                    <h4 onClick={() => setEditUsername(false)}>&#10006;</h4>
+                                    <h4 className='cancel-x' onClick={() => setEditUsername(false)}>&#10006;</h4>
                                 </div>
                                 : <h4 className='edit-on-click' onClick={() => setEditUsername(true)}>Edit</h4>}
                         </div>
@@ -104,7 +104,7 @@ function EditProfile(props) {
                             }
                             {editRole ?
                                 <div className='input-and-exit'>
-                                    <h4 onClick={() => setEditRole(false)}>&#10006;</h4>
+                                    <h4 className='cancel-x' onClick={() => setEditRole(false)}>&#10006;</h4>
                                 </div>
                                 : <h4 className='edit-on-click' onClick={() => setEditRole(true)}>Edit</h4>}
                         </div>

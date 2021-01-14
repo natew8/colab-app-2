@@ -30,8 +30,8 @@ module.exports = {
         const db = req.app.get('db')
         const { convo_id } = req.params
         const { comment } = req.body
-        const date = new Date
-        const newComment = await db.conversations.add_comment([convo_id, req.session.user.id, comment, date])
+        // const date = new Date
+        const newComment = await db.conversations.add_comment([convo_id, req.session.user.id, comment])
         res.status(200).send(newComment)
     }
 }

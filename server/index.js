@@ -44,6 +44,7 @@ app.delete('/api/project/delete/:project_id/:project_creator_id', projectCtrl.de
 app.get('/api/project/songList/:project_id', songCtrl.getAllSongsInProject)
 app.get('/api/project/song/:song_id', songCtrl.getSong)
 app.post('/api/project/addSong', songCtrl.addSongToProject)
+app.post('/api/project/song/addVersion/:song_id', songCtrl.addSongVersion)
 // app.put('/api/project/song/editSongInfo', songCtrl.editSongInfo)
 app.delete('/api/project/song/delete/:song_id', songCtrl.deleteSongFromProject)
 

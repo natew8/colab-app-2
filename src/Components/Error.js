@@ -1,11 +1,18 @@
 import React from 'react'
+import { useHistory, withRouter } from 'react-router-dom'
 
 
-export default function Error() {
+function Error(props) {
+    const history = useHistory()
+    function goHome() {
+        history.push('/')
+    }
     return (
         <div>
-            <h1>Page not found... sorry. I mean really this is on you. So if anyone should apologize.. nevermind. If you'd like to be redirected click below.</h1>
-            <h2>Ya right here</h2>
+            <h1>Oops! Looks like you got lost. Lets get you back on track.</h1>
+            <h1 onClick={() => goHome()}>Click here to be redirected.</h1>
         </div>
     )
 }
+
+export default withRouter(Error)

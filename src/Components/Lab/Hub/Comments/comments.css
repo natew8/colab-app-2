@@ -65,12 +65,22 @@
     margin: 0px;
     margin-top: 1.5px;
     text-align: left;
+    font-weight: 500;
 }
 
 .comment-user-info{
     margin: 0px;
-    margin-right: 1rem;
-    font-weight: 300;
+    margin-right: .6rem;
+    font-weight: 500;
+    color: #adadad;
+}
+.comment-user-info-date{
+    margin: 0px;
+    margin-right: .6rem;
+    padding: 5px 0px;
+    font-size: .6rem;
+    font-weight: bold;
+    color: #adadad;
 }
 
 .message-line{
@@ -94,6 +104,7 @@
     margin-left: -10px;
     margin-right: -10px;
     padding: 5px .5rem;
+    height: 3rem;
     display: flex;
     align-items: center;
     background-color: #071013;
@@ -106,20 +117,22 @@
     margin-right: 5px;
 }
 .comment-form{
-    margin-left:auto;
     width: 50rem;
     padding: 5px;
 }
 .comment-input-field{
     height: 1.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
 }
 .comment-input-field:focus{
-    outline: 2px solid #ff9505;
+    border: 1px solid #ff9505;
 }
 
 .comment-box{
     display: flex;
-    margin-top: .6rem;
+    margin-top: 1rem;
 }
 
 .comment-pic{

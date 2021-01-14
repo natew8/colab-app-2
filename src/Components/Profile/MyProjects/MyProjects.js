@@ -6,7 +6,6 @@ import './myProjects.css'
 function MyProjects() {
     const [projects, setProjects] = useState([])
     const [loading, setLoading] = useState(true)
-    const [empty, setEmpty] = useState(false)
 
 
     useEffect(() => {

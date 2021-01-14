@@ -6,7 +6,7 @@ import './project.css'
 import NewSong from './NewSong/NewSong'
 
 function Project(props) {
-    const [projectInfo, setProjectInfo] = useState({})
+    // const [projectInfo, setProjectInfo] = useState({})
     const [deadline, setDeadline] = useState('')
     const [creator, setCreator] = useState('')
     const [creatorId, setCreatorId] = useState(0)
@@ -17,7 +17,7 @@ function Project(props) {
 
     useEffect(() => {
         axios.get(`/api/projects/project/${props.match.params.id}`).then(res => {
-            setProjectInfo(res.data)
+            // setProjectInfo(res.data)
             setDeadline(res.data.deadline)
             setCreator(res.data.project_creator)
             setCreatorId(res.data.project_creator_id)
@@ -26,7 +26,7 @@ function Project(props) {
                 setSongs(res.data)
             })
         })
-    }, [newSong])
+    }, [props.match.params.id, newSong])
 
     function goBack() {
         props.history.goBack()

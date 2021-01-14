@@ -51,7 +51,8 @@ function TeamBuild(props) {
                 <div className='build-team-user'>
                     <img
                         className={element.profile_pic ? 'build-team-profile-pic' : 'build-team-default-pic'}
-                        src={element.profile_pic ? element.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} />
+                        src={element.profile_pic ? element.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'}
+                        alt='user' />
                     <h3 className='build-team-display-username'>{element.username}</h3>
                 </div>
                 <h4 className='build-role'>{element.role}</h4>
@@ -66,7 +67,9 @@ function TeamBuild(props) {
                 <div className='build-team-user'>
                     <img
                         className={element.profile_pic ? 'new-team-profile-pic' : 'new-team-default-pic'}
-                        src={element.profile_pic ? element.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} />
+                        src={element.profile_pic ? element.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'}
+                        alt='user'
+                    />
                     <h3 className='build-team-display-username'>{element.username}</h3>
                 </div>
                 <h4 className='build-role'>{element.role}</h4>

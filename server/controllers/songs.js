@@ -15,6 +15,7 @@ module.exports = {
     /* Adds a Song to a Project*/
     addSongToProject: async (req, res) => {
         const db = req.app.get('db')
+        console.log(req.body)
         const { project_id, title, artist, key, bpm, time, status, notes, project_creator_id } = req.body
         const { id } = req.session.user
         const date = new Date
@@ -31,5 +32,18 @@ module.exports = {
         const { song_id } = req.params
         const del = await db.songs.delete_song_from_project([song_id])
         res.status(200).send(del)
+    },
+
+    addSongVersion: async (req, res) => {
+        const db = req.app.get('db')
+        const { song_id } = req.params
+        const { title, url } = req.body
+        const { id } = req.session.user
+        try {
+            const [version] = await db.songs.add_song_version([song_id, id, title, url])
+            res.status(200).send(version)
+        } catch (err) {
+            res.status(500).send(err)
+        }
     }
 }

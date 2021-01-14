@@ -12,7 +12,7 @@
 -- project_title VARCHAR,
 -- deadline VARCHAR,
 -- project_creator_id INT REFERENCES colab_user(id),
--- created DATE 
+-- created TIMESTAMPTZ DEFAULT NOW()
 -- )
 
 
@@ -34,7 +34,7 @@
 -- song_bpm VARCHAR(10),
 -- song_time VARCHAR(10),
 -- status VARCHAR,
--- created DATE
+-- created TIMESTAMPTZ DEFAULT NOW()
 -- )
 
 -- CREATE TABLE song_versions(
@@ -43,7 +43,7 @@
 -- uploader_id INT REFERENCES colab_user(id),
 -- version_title VARCHAR(200),
 -- audio_file TEXT
--- upload_date DATE
+-- upload_date TIMESTAMPTZ DEFAULT NOW()
 -- )
 
 -- CREATE TABLE conversations (
@@ -53,7 +53,7 @@
 -- subject_line VARCHAR(150),
 -- song_time VARCHAR(20),
 -- body VARCHAR,
--- convo_created DATE
+-- convo_created TIMESTAMPTZ DEFAULT NOW()
 -- )
 
 -- CREATE TABLE comments (
@@ -61,7 +61,7 @@
 -- convo_id INT REFERENCES conversations(id),
 -- author_id INT REFERENCES colab_user(id),
 -- comment VARCHAR,
--- date_created DATE
+-- date_created TIMESTAMPTZ DEFAULT NOW()
 -- )
 
 -- DELETE FROM projects_users;

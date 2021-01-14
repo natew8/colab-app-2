@@ -8,13 +8,13 @@ function NewSong(props) {
     const [title, setTitle] = useState('')
     const [artist, setArtist] = useState('')
     //Key Signature
-    const [letter, setLetter] = useState('')
+    const [letter, setLetter] = useState('C')
     const [majMinor, setMajMinor] = useState('')
-    const [key, setKey] = useState('')
+    // const [key, setKey] = useState('')
     //----
     const [bpm, setBpm] = useState('')
     const [time, setTime] = useState('0:00')
-    const [status, setStatus] = useState('')
+    const [status, setStatus] = useState('In Progress')
     const [notes, setNotes] = useState('')
     //project_id
     const project_id = props.match.params.id
@@ -23,9 +23,9 @@ function NewSong(props) {
 
     function createSong() {
         const fullKey = `${letter}${majMinor}`
-        setKey(fullKey)
-        axios.post('/api/project/addSong', { project_id, title, artist, key, bpm, time, status, notes, project_creator_id }).then(res => {
+        axios.post('/api/project/addSong', { project_id, title, artist, key: fullKey, bpm, time, status, notes, project_creator_id }).then(res => {
             console.log(res.data)
+
             props.newSong()
         })
     }

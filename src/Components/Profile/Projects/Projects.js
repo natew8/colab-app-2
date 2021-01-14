@@ -8,7 +8,6 @@ import './projects.css'
 function Projects() {
     const [projects, setProjects] = useState([])
     const [loading, setLoading] = useState(true)
-    const [noProjects, setNoProjects] = useState(false)
     // const [open, setOpen] = useState(false)
 
     useEffect(() => {
@@ -37,7 +36,6 @@ function Projects() {
                 <h1 className='team-projects-title'>Team Projects</h1>
                 <div className='team-project-line'></div>
             </div>
-            {noProjects ? <h1>No team Projects</h1> : null}
             {loading ? <h1>Finding your Team Projects</h1> : projectsMapped}
         </div>
     )

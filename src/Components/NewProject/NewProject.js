@@ -1,6 +1,6 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
-import { Link, Route, Switch, withRouter } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import TeamBuild from './TeamBuild'
 import './newProject.css'
 

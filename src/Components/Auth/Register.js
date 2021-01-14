@@ -53,7 +53,7 @@ function Register(props) {
             transition={{ type: 'tween', duration: .75 }}
             className='login-view' >
 
-            {loading ? <h1 className='logging-in'>Creating your profile. <br></br> Welcome to Colab!</h1> : <div className='login-container'>
+            {loading ? <h1 className='logging-in'>Creating your profile. <br></br> Welcome to Colab!</h1> : <div className='register-container'>
                 <p className='back-arrow'>
                     <Link style={{ textDecoration: 'none' }} to='/'>&larr;</Link>
                 </p>

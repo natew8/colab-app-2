@@ -45,20 +45,22 @@ function Versions(props) {
     };
 
     function uploadFile(file, signedRequest, url) {
+        console.log(file, signedRequest, url)
         const options = {
             headers: {
                 'Content-Type': file.type
             }
         }
+        console.log('hit2')
         axios.put(signedRequest, file, options).then(res => {
-            console.log('hit2')
-            setUrl(res.url)
-            axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url }).then(ver => {
-                setIsUploading(false)
-                setUrl(ver.url)
-            }).catch(err => {
-                console.log(err)
-            })
+            console.log('hit3')
+            // setUrl(res.url)
+            // axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url: res.url }).then(ver => {
+            //     setIsUploading(false)
+            //     setUrl(ver.url)
+            // }).catch(err => {
+            //     console.log(err)
+            // })
         }).catch(err => {
             console.log(err.response)
             setError(true)

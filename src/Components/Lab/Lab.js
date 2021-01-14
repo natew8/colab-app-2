@@ -41,7 +41,7 @@ function Lab(props) {
         <React.Fragment className='page'>
             <div className='page'>
                 <header className='lab-header'>
-                    {/* <img className='lab-header-logo' src={logo} alt='Logo' /> */}
+                    <img className='lab-header-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabAlogo.png' alt='Logo' />
                     <div className='songList-container'>
                         {mappedSongList}
                     </div>

@@ -11,7 +11,6 @@ import EditProfile from './EditProfile/EditProfile'
 import NewProject from '../NewProject/NewProject'
 import MyProjects from './MyProjects/MyProjects'
 import Project from './SingleProject/project'
-import NewSong from '../NewSong/NewSong'
 
 class Profile extends Component {
     constructor(props) {
@@ -42,7 +41,6 @@ class Profile extends Component {
                     <Switch>
                         <Route exact path='/user/profile/teamProjects' component={Projects} />
                         <Route exact path='/user/profile/newProject' component={NewProject} />
-                        <Route exact path='/user/profile/addSong/:project_id' component={NewSong} />
                         <Route exact path='/user/profile/edit' component={EditProfile} />
                         <Route exact path='/user/profile/viewProject/:id/:project_title' component={Project} />
                         <Route exact path='/user/profile' component={MyProjects} />

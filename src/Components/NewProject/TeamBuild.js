@@ -44,7 +44,7 @@ function TeamBuild(props) {
     }
 
     const filteredUsers = users.filter((element, index) => {
-        return element.username.includes(filter)
+        return element.username.includes(filter.toLocaleLowerCase())
     }).map((element, index) => {
         return (
             <div key={element.id} className='user-container'>

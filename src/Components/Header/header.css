@@ -12,7 +12,8 @@
 .main-header-logo{
     margin-left:1.7rem;
     position: relative;
-    height: 60px;
+    height: 55px;
+    filter:drop-shadow(2px 2px 5px #071013)
 }
 
 .main-user-info{
@@ -28,6 +29,8 @@
     margin-left: 10px;
     margin-right: 2.3rem;
     margin-top: 3px;
+    border: 2px solid #ff9505;
+    border-radius: 50%;
     
 }
 .header-username>h2{

@@ -3,34 +3,35 @@ import axios from 'axios'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './project.css'
+import NewSong from './NewSong/NewSong'
 
 function Project(props) {
     const [projectInfo, setProjectInfo] = useState({})
     const [deadline, setDeadline] = useState('')
     const [creator, setCreator] = useState('')
+    const [creatorId, setCreatorId] = useState(0)
     const [created, setCreated] = useState('')
     const [songs, setSongs] = useState([])
+    //New Song State
+    const [newSong, setNewSong] = useState(false)
 
     useEffect(() => {
         axios.get(`/api/projects/project/${props.match.params.id}`).then(res => {
             setProjectInfo(res.data)
             setDeadline(res.data.deadline)
             setCreator(res.data.project_creator)
+            setCreatorId(res.data.project_creator_id)
             setCreated(res.data.created)
             axios.get(`/api/project/songList/${props.match.params.id}`).then(res => {
                 setSongs(res.data)
             })
         })
-    }, [])
+    }, [newSong])
 
     function goBack() {
         props.history.goBack()
     }
 
-    function addSong() {
-        console.log('hit1')
-        // props.history.push(`/user/profile/addSong/${props.match.params.id}`)
-    }
 
 
     const mappedSongs = songs.map((element) => {
@@ -65,10 +66,16 @@ function Project(props) {
                     {/* <h2 className='details-header-item'>Created On: 04/28/2020 </h2> */}
                 </div>
             </div>
-            {mappedSongs}
+            {newSong ?
+                <NewSong creatorId={creatorId} newSong={setNewSong} />
+                :
+                <React.Fragment>
+                    {mappedSongs}
+                </React.Fragment>
+            }
             <div className='project-footer'>
                 <div className='project-footer-left'>
-                    <h4 onClick={() => addSong()} className='footer-nav-item-2'>Add Song</h4>
+                    <h4 onClick={() => setNewSong(!newSong)} className='footer-nav-item-2'>Add Song</h4>
                     <h4 className='footer-nav-item-2'>Edit Project Info</h4>
                 </div>
                 <div className='project-footer-right'>

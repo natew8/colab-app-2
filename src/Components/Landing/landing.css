@@ -34,7 +34,8 @@ black: 071013 */
 }
 
 .colab-logo{
-    width: 300px;
+    width: 25rem;
+    margin-top: 5rem;
 }
 
 button{
@@ -43,7 +44,7 @@ button{
     background-color: #ff9505;
     outline:none;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 1px 2px 5px #071013;
     margin-bottom: 20px;
     font-family: Roboto Condensed;

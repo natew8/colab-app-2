@@ -1,14 +1,15 @@
 .link-to-login{
     text-align: left;
     padding: 0px;
-    margin-left: 15px;
+    padding-left: 1px;
     margin-bottom: 0px;
+    color: blue;
+    font-weight: 200;
+    font-size: .9rem;
 }
 
 .welcome-message{
-    text-align: left;
-    margin-bottom: -20px;
-    margin-left: 15px;
+    margin-top: 0px;
 }
 
 /*Login Styling*/
@@ -43,11 +44,8 @@
     top: 0px;
 }
 .login-logo{
-    max-width: 100%;
-    position: relative;
-    margin-top: -10px;
-    margin-bottom: -20px;
-    height: 150px;
+    width: 10rem;
+    padding: 10px;
 }
 .background-login{
     max-width: 100%;
@@ -57,7 +55,8 @@
     right: 0;
 
 }
-form{
+.auth-reg-log-form{
+    border: 1px solid #c6c6c6;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -66,22 +65,19 @@ form{
 .input-field{
     height: 40px;
     margin-bottom: 20px;
-    border-radius: 3px;
     font-size: 1rem;
     outline-color: #ff9505;
-    border: 1.5px solid #071013;
-    box-shadow: 1.5px 1.75px 3px black;
+    border-bottom: 1.5px solid #c6c6c6;
+    /* box-shadow: 1.5px 1.75px 3px black; */
     
 }
 
 .input-error{
     height: 40px;
-    border-radius: 3px;
-    border: 2px solid #d7263d;
+    border-bottom: 2px solid #d7263d;
     outline-color: #ff9505;
     margin-bottom: px;
-    color: #d7263d;
-    box-shadow: 1.5px 1.75px 3px black;
+    text-align: center;
 }
 
 .required-field{

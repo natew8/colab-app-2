@@ -26,7 +26,7 @@
 }
 .filter-users-input:focus{
     width: 15rem;
-    outline: 1px solid #ff9505;
+   
 }
 .team-build{
     display: flex;
@@ -37,7 +37,7 @@
     overflow-y: scroll;
     height: 27.2rem;
     border: 2px solid #c6c6c6;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 0px 5px;
     width: 24rem;
     margin-bottom: 1rem;

@@ -26,16 +26,6 @@
     margin-right: -.6rem;
     background-color: #071013;
     line-height: 5px;
-    /* position: sticky;
-    top: 0px;
-    height: 1rem;
-    text-align: center;
-    vertical-align: middle;
-    margin-top: 0;
-    margin-bottom: .6rem;
-    padding-bottom: 8px;
-    z-index: 3000;
-    color: #ff9505; */
 }
 .member-container{
     display: flex;
@@ -44,6 +34,7 @@
     height: 2.5rem;
     margin-bottom: .6rem;
     border: 1px solid #c6c6c6;
+    border-radius: 3px;
 }
 .team-display-username{
     color: #071013;

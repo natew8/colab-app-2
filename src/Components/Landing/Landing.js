@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { motion } from 'framer-motion'
-// import Logo from '../../orangeScarlet-whiteText.png'
 import './landing.css'
 
 
@@ -10,7 +9,7 @@ function Landing() {
         <motion.div initial={{ background: 'linear-gradient(180deg, #1C6B85 10%, #071013 100%), #F4F6F6' }} className='landing'>
             <div className='welcome-banner'>
                 <motion.div initial={{ background: '#0000' }} animate={{ background: 0 }} className='welcome-banner'>
-                    {/* <motion.img initial={{ opacity: 0, y: 70 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className='colab-logo' src={Logo} alt='Logo' /> */}
+                    <motion.img initial={{ opacity: 0, y: 70 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className='colab-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabLogoWhite.png' alt='Logo' />
                     <div className='text-box'>
                         <motion.h1
                             initial={{ opacity: 0 }}

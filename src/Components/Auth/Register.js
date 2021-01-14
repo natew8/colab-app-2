@@ -54,17 +54,13 @@ function Register(props) {
             className='login-view' >
 
             {loading ? <h1 className='logging-in'>Creating your profile. <br></br> Welcome to Colab!</h1> : <div className='login-container'>
-                <Link to='/'>
-                    <p className='back-arrow'>&larr;</p>
-                </Link>
-                {/* <img className='login-logo' src={Logo} alt='Logo' /> */}
-                <h1 className='welcome-message'>Welcome to Colab</h1>
-                <h5 className='link-to-login'>
-                    <Link to='/login'>
-                        Already a member? Sign In!
-                    </Link>
-                </h5>
-                <form>
+                <p className='back-arrow'>
+                    <Link style={{ textDecoration: 'none' }} to='/'>&larr;</Link>
+                </p>
+                <img className='login-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabLogoAllBlack.png' alt='Logo' />
+                <h1 className='welcome-message'>Welcome!</h1>
+
+                <form className='auth-reg-log-form'>
                     <input
                         className={emptyError ? 'input-error' : 'input-field'}
                         type='text'
@@ -105,6 +101,11 @@ function Register(props) {
                     {error && <p className='error-message'>{error}</p>}
                     <button onClick={() => userRegister()}>signup</button>
                 </form>
+                <h5 className='link-to-login'>
+                    <Link className='link-to-login' style={{ textDecoration: 'none' }} to='/login'>
+                        Already a member? Sign In!
+                         </Link>
+                </h5>
             </div>}
         </motion.div >
     )

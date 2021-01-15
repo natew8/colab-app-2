@@ -24,9 +24,9 @@
 .version-loading-container{
     padding: .6rem;
     margin: 0px;
+    height: 21.1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .version-footer{
@@ -63,7 +63,34 @@
 }
 
 .version-title-input{
+    width: 12rem;
     margin: 0px;
     margin-bottom: .6rem;
 }
 
+.upload-logo{
+    margin-top: 3rem;
+    width: 50px;
+}
+
+.progress-loading-container{
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.waveform-icon{
+    width: 40px;
+    height: 40px;
+    margin-right: 1px;
+    filter: invert(54%) sepia(98%) saturate(950%) hue-rotate(354deg) brightness(103%) contrast(106%);
+}
+
+.version-container{
+    display: flex;
+    align-items: center;
+    border-bottom:1px solid #c6c6c6;
+}
+.version-container:hover{
+    cursor: pointer;
+}

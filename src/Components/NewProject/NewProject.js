@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import TeamBuild from './TeamBuild'
 import './newProject.css'
 
@@ -28,7 +27,7 @@ function NewProject(props) {
 
 
     return (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .5 }} className='new-project-container'>
+        <div className='new-project-container'>
             <div className='team-projects-header'>
                 <h1 className='team-projects-title'>New Project</h1>
                 <div className='team-project-line'></div>
@@ -61,7 +60,7 @@ function NewProject(props) {
                 </div>
                 : null}
 
-        </motion.div>
+        </div>
     )
 }
 

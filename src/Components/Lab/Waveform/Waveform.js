@@ -18,8 +18,8 @@ class Waveform extends Component {
         this.wavesurfer = WaveSurfer.create({
             container: '#waveDisplay',
             audioCenterImmediately: true,
-            barWidth: 4,
-            barRadius: 3,
+            // barWidth: 4,
+            // barRadius: 3,
             waveColor: '#ff9505',
             progressColor: '#d7263d',
             hideScrollbar: true,

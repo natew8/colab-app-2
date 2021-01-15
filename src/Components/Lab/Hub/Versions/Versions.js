@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import { CircleLoader } from 'react-spinners'
+import { ScaleLoader } from 'react-spinners'
 import axios from 'axios'
 import { v4 as randomString } from 'uuid'
 import './versions.css'
@@ -19,13 +19,13 @@ function Versions(props) {
         axios.get(`/api/project/song/versions/${props.match.params.song_id}`).then(res => {
             console.log(res.data)
             setVersions(res.data)
-            props.setVersion(res.data[0])
         })
     }, [props.match.params.song_id])
 
 
     function setWave(url) {
         props.setVersion(url)
+
     }
 
 
@@ -68,10 +68,10 @@ function Versions(props) {
         }
         console.log('hit2')
         axios.put(signedRequest, file, options).then(res => {
-            console.log(res.data)
             axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url }).then(ver => {
                 console.log(ver.data)
                 setWave(ver.data.audio_file)
+                setVersions([...versions, res.data])
                 setNewUpload(false)
                 setTitle('')
                 setIsUploading(false)
@@ -85,10 +85,12 @@ function Versions(props) {
         })
     }
 
+    const alternatingBackground = ['#c6c6c6', '#f4f6f6']
 
     const mappedVersions = versions.map((ver, index) => {
         return (
-            <div onClick={() => setWave(ver.audio_file)} key={index} className='version-container'>
+            <div onClick={() => setWave(ver.audio_file)} key={index} color={alternatingBackground[index % 2 ? alternatingBackground[0] : alternatingBackground[1]]} className='version-container'>
+                <img src='https://colab-image-assets.s3-us-west-1.amazonaws.com/2470574-200.png' alt='wave' className='waveform-icon' />
                 <h4>{ver.version_title}</h4>
             </div>
         )
@@ -102,25 +104,27 @@ function Versions(props) {
             {newUpload ?
                 <div className='version-loading-container'>
                     {isUploading ?
-                        <>
-                            <CircleLoader />
+                        <div className='progress-loading-container'>
+                            <ScaleLoader color={'#ff9505'} />
                             <h1>{progress}</h1>
-                        </>
+                        </div>
                         :
                         <>
-                            <h3 className='version-title-header'>Song Title...</h3>
+                            <h3 className='version-title-header'>Please enter a name for the file</h3>
                             <input className='version-title-input' onChange={(e) => goNext(e.target.value)} value={title} type='text' placeholder='Filename' />
                             {title !== '' ?
-                                <label className='upload-input-label' htmlFor='version-upload-input'>
-                                    File for upload...
-                            <input
-                                        id='version-upload-input'
-                                        multiple
-                                        onChange={(e) => getSignedRequest(e.target.files)}
-                                        type='file'
-                                        accept='audio/*'
-                                        capture='file' />
-                                </label>
+                                <>
+                                    <label className='upload-input-label' htmlFor='version-upload-input'>
+                                        Choose your file...
+                                    <input
+                                            id='version-upload-input'
+                                            onChange={(e) => getSignedRequest(e.target.files)}
+                                            type='file'
+                                            accept='audio/*'
+                                            capture='file' />
+                                    </label>
+                                    <img src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabAlogo.png' alt='logo' className='upload-logo' />
+                                </>
                                 :
                                 null
                             }
@@ -129,13 +133,9 @@ function Versions(props) {
                 </div>
                 :
                 <div className='version-loading-container'>
-                    {isUploading ?
-                        <h1>Loading...</h1>
-                        :
-                        <React.Fragment>
-                            {mappedVersions}
-                        </React.Fragment>
-                    }
+                    <React.Fragment>
+                        {mappedVersions}
+                    </React.Fragment>
                 </div>
             }
             {error ? <h1>Upload failed, please try again.</h1> : null}

@@ -11,7 +11,7 @@ function Header(props) {
         axios.get('/api/auth/me').then(res => {
             props.updateUser(res.data)
         })
-    }, [props])
+    }, [])
 
     return (
         <header className='colab-header'>

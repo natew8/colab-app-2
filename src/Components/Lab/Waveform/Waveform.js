@@ -37,7 +37,7 @@ class Waveform extends Component {
                 primaryLabelInterval: 1,
             })]
         })
-        this.wavesurfer.load(this.state.currentTrack)
+        this.wavesurfer.load(this.props.version ? this.props.version : this.state.currentTrack)
         this.setState({
             volume: this.wavesurfer.setVolume(.8)
         })
@@ -50,6 +50,9 @@ class Waveform extends Component {
             this.setState({
                 play: false
             })
+        }
+        if (prevProps.version != this.props.version) {
+            this.wavesurfer.load(this.props.version ? this.props.version : this.state.currentTrack)
         }
     }
 

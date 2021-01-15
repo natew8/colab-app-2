@@ -19,12 +19,13 @@ function Versions(props) {
         axios.get(`/api/project/song/versions/${props.match.params.song_id}`).then(res => {
             console.log(res.data)
             setVersions(res.data)
+            props.setVersion(res.data[0])
         })
     }, [props.match.params.song_id])
 
 
     function setWave(url) {
-        console.log(url)
+        props.setVersion(url)
     }
 
 
@@ -87,7 +88,7 @@ function Versions(props) {
 
     const mappedVersions = versions.map((ver, index) => {
         return (
-            <div onDoubleClick={() => setWave(ver.audio_file)} key={index} className='version-container'>
+            <div onClick={() => setWave(ver.audio_file)} key={index} className='version-container'>
                 <h4>{ver.version_title}</h4>
             </div>
         )

@@ -8,6 +8,7 @@ const UPDATE_USER = 'UPDATE_USER'
 const LOGOUT_USER = 'LOGOUT_USER'
 
 export function updateUser(user) {
+    console.log(user)
     return {
         type: UPDATE_USER,
         payload: user

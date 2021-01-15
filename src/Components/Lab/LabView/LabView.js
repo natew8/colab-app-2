@@ -5,6 +5,7 @@ import Waveform from '../Waveform/Waveform'
 import SongDeets from '../SongDeets/SongDeets'
 import Hub from '../Hub/Hub'
 import './labview.css'
+// import WaveForm2 from '../Waveform/WaveForm2'
 
 function LabView(props) {
     const [title, setTitle] = useState('')
@@ -17,6 +18,13 @@ function LabView(props) {
         axios.get(`/api/project/song/${props.match.params.song_id}`).then(res => {
             setTitle(res.data.title)
             setArtist(res.data.artist)
+            axios.get(`/api/project/song/versions/${props.match.params.song_id}`).then(res => {
+                if (!res.data.length) {
+                    setCurrentVersion('')
+                } else {
+                    setCurrentVersion(res.data[0].audio_file)
+                }
+            })
         })
     }, [props.match.params.song_id])
 
@@ -29,9 +37,9 @@ function LabView(props) {
         setConvoView(bool)
     }
     return (
-        // <h1>Hey</h1>
         <div className='lab-view'>
             <Waveform version={currentVersion} artist={artist} title={title} />
+            {/* <WaveForm2 version={currentVersion} artist={artist} title={title} /> */}
             <React.Fragment>
                 <React.Fragment>
                     <div className='lab-nav-bar'>
@@ -39,7 +47,7 @@ function LabView(props) {
                         <h2 onClick={() => setView(false)} className={!convoView ? 'current-lab-nav-item' : 'lab-nav-item'}>Song Details</h2>
                     </div>
                     {convoView ?
-                        <Hub song_id={props.match.params.song_id} />
+                        <Hub setVersion={setVersion} song_id={props.match.params.song_id} />
                         :
                         <SongDeets song_id={props.match.params.song_id} />
                     }

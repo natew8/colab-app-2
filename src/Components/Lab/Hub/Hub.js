@@ -17,7 +17,7 @@ function Hub(props) {
                 <div className='dividing-line'></div>
                 <Conversations />
                 <div className='dividing-line'></div>
-                <Versions />
+                <Versions setVersion={props.setVersion} />
             </div>
         </div>
     )

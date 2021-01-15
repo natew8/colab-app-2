@@ -8,6 +8,7 @@ import { v4 as randomString } from 'uuid'
 import './editProfile.css'
 
 function EditProfile(props) {
+    console.log(props.updateUser)
     const [username, setUsername] = useState(props.username)
     const [role, setRole] = useState('')
     const [email, setEmail] = useState('')

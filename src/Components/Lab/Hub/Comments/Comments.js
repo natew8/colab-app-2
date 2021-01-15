@@ -19,7 +19,6 @@ function Comments(props) {
 
     useEffect(() => {
         axios.get(`/api/project/song/conversation/${props.convoId}`).then(res => {
-            console.log(res.data.profile_pic)
             setTitle(res.data.subject_line)
             setSong_Version(res.data.song_version)
             setTime(res.data.song_time)
@@ -28,9 +27,6 @@ function Comments(props) {
             setProfilePic(res.data.profile_pic)
             setUser(res.data.username)
             setComment('')
-            // axios.get(`/api/project/song/conversation/comments/${props.convoId}`).then(com => {
-            //     setComments(com.data)
-            // })
         })
     }, [props.convoId, props.song_id, props.project_id])
 

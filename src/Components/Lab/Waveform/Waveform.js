@@ -24,6 +24,7 @@ class Waveform extends Component {
             progressColor: '#d7263d',
             hideScrollbar: true,
             cursorColor: '#c6c6c6',
+            interact: true,
             cursorWidth: 1,
             scrollParent: true,
             height: 200,

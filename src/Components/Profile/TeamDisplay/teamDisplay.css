@@ -55,6 +55,13 @@
     border: 1px solid #ff9505;
     filter: invert(0);
 }
+.team-profile-pic{
+    width: 2rem;
+    height: 2rem;
+    margin-left: 5px;
+    margin-right: 10px;
+    border-radius: 50% 50%;
+}
 
 .team-display-username{
     font-family: Nunito;

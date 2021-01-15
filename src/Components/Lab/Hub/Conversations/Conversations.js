@@ -18,10 +18,10 @@ function Conversations(props) {
     useEffect(() => {
         axios.get(`/api/project/song/conversations/${props.match.params.song_id}`).then(res => {
             setConversations(res.data)
-            if (res.data[0]) {
-                setConvoId(res.data[0].id)
-            } else {
+            if (!res.data.length) {
                 setConvoId(0)
+            } else {
+                setConvoId(res.data[0].id)
             }
         })
     }, [props.match.params.song_id, newConvo])

@@ -71,7 +71,7 @@ function Versions(props) {
             console.log(res.data)
             axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url }).then(ver => {
                 console.log(ver.data)
-                setWave(ver.audio_file)
+                setWave(ver.data.audio_file)
                 setNewUpload(false)
                 setTitle('')
                 setIsUploading(false)

@@ -15,7 +15,6 @@ module.exports = {
     /* Adds a Song to a Project*/
     addSongToProject: async (req, res) => {
         const db = req.app.get('db')
-        console.log(req.body)
         const { project_id, title, artist, key, bpm, time, status, notes, project_creator_id } = req.body
         const { id } = req.session.user
         const date = new Date

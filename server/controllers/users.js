@@ -71,10 +71,16 @@ module.exports = {
         } catch (err) {
             res.status(409).send(err)
         }
+    },
+    updateProfilePic: async (req, res) => {
+        const db = req.app.get('db')
+        const { url } = req.body
+        const { id } = req.session.user
+        try {
+            const [updatePic] = await db.users.update_user_profile_pic([id, url])
+            res.status(200).send(updatePic)
+        } catch (err) {
+            res.status(500).send(err)
+        }
     }
-
-
-
-    // const [user] = await db.users.update_user_info([id, email, username, role, profile_pic])
-    // res.status(200).send(user)
 }

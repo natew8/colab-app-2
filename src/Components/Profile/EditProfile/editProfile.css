@@ -18,9 +18,15 @@
     padding: 0px 1rem;
 }
 
-.edit-profile-pic{
+.edit-default-pic{
     width: 15rem;
     border: 1px solid #ff9505;
+    border-radius: 50%;
+}
+.edit-profile-pic{
+    width: 15rem;
+    height: 15rem;
+    border: 2px solid #ff9505;
     border-radius: 50%;
 }
 
@@ -30,16 +36,17 @@
     top: 14rem;
     right: 51rem;
     width: 2rem;
+    filter: invert(74%) sepia(0%) saturate(0%) hue-rotate(165deg) brightness(102%) contrast(109%);
 }
 
 .add-icon:hover{
     border-radius: 50%;
-    background-color: #ff9505;
     position: absolute;
     top: 14rem;
     right: 51rem;
-    width: 2.25rem;
+    width: 2rem;
     cursor: pointer;
+    filter: invert(60%) sepia(92%) saturate(1797%) hue-rotate(353deg) brightness(102%) contrast(107%);
 }
 /* input[type='file']{
     background-color: orange;

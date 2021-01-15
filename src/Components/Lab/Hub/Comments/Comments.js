@@ -19,12 +19,13 @@ function Comments(props) {
 
     useEffect(() => {
         axios.get(`/api/project/song/conversation/${props.convoId}`).then(res => {
+            console.log(res.data.profile_pic)
             setTitle(res.data.subject_line)
             setSong_Version(res.data.song_version)
             setTime(res.data.song_time)
             setBody(res.data.body)
             setDate(res.data.convo_created)
-            setProfilePic(res.data.profilePic)
+            setProfilePic(res.data.profile_pic)
             setUser(res.data.username)
             setComment('')
             // axios.get(`/api/project/song/conversation/comments/${props.convoId}`).then(com => {
@@ -51,7 +52,7 @@ function Comments(props) {
     const commentsMapped = comments.map((comment, index) => {
         return (
             <div className='comment-box'>
-                <img className='comment-pic' src={comment.profile_pic ? comment.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='user' />
+                <img className={comment.profilePic ? 'comment-pic' : 'comment-default-pic'} src={comment.profile_pic ? comment.profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='user' />
                 <div className='content-box'>
                     <div className='info-box'>
                         <h4 className='comment-user-info'>{comment.username}</h4>
@@ -72,7 +73,7 @@ function Comments(props) {
                 </div>
             </div>
             <div className='main-comment-container'>
-                <img className='comm-profile-pic' src={profilePic ? profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='user' />
+                <img className={profilePic ? 'comm-profile-pic' : 'comm-default-pic'} src={profilePic ? profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='user' />
                 <div className='content-box'>
                     <div className='info-box'>
                         <h4 className='comment-user-info'>{user}</h4>

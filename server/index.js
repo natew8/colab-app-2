@@ -29,6 +29,7 @@ app.post('/api/auth/logout', userCtrl.logout)
 app.get('/api/auth/me', userCtrl.getUser)
 app.get('/api/auth/users', userCtrl.getTeam)
 app.put('/api/user/update', userCtrl.updateUserInfo)
+app.put('/api/user/update/pic', userCtrl.updateProfilePic)
 
 /*Project end points*/
 app.get('/api/projects/user', projectCtrl.getMyProjects)

@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateUser } from '../../../dux/userReducer'
-import { CircleLoader } from 'react-spinners'
+import { ScaleLoader } from 'react-spinners'
 import { v4 as randomString } from 'uuid'
 import './editProfile.css'
 
 function EditProfile(props) {
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState(props.username)
     const [role, setRole] = useState('')
     const [email, setEmail] = useState('')
-    const [profile_pic, setProfile_Pic] = useState('')
+    const [profile_pic, setProfile_Pic] = useState(props.profilePic)
 
 
     const [upload, setUpload] = useState(false)
@@ -26,9 +26,7 @@ function EditProfile(props) {
     useEffect(() => {
         axios.get('/api/auth/me').then(res => {
             setEmail(res.data.email)
-            setUsername(res.data.username)
             setRole(res.data.role)
-            setProfile_Pic(res.data.profile_pic)
             setLoading(false)
         })
     }, [editEmail, editRole, editUsername])
@@ -37,7 +35,6 @@ function EditProfile(props) {
     function updateUserInfo() {
         console.log(email, username, role, profile_pic)
         axios.put('/api/user/update', { email, username, role, profile_pic }).then((res) => {
-            console.log(res.data)
             props.updateUser(res.data)
             setUpload(false)
             setEditEmail(false)
@@ -49,7 +46,6 @@ function EditProfile(props) {
     }
 
     function getSignedRequest([file]) {
-        console.log(file)
         setIsUploading(true)
         const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`
         axios.get('/api/s3/picture', {
@@ -58,7 +54,6 @@ function EditProfile(props) {
                 'file-type': file.type,
             }
         }).then(res => {
-            console.log(res.data)
             const { signedRequest, url } = res.data
             uploadFile(file, signedRequest, url)
         }).catch(err => {
@@ -68,7 +63,6 @@ function EditProfile(props) {
     };
 
     function uploadFile(file, signedRequest, url) {
-        console.log(file, signedRequest, url)
         const options = {
             headers: {
                 'Content-Type': file.type,
@@ -78,13 +72,19 @@ function EditProfile(props) {
                     `${((progressEvent.loaded / progressEvent.total) * 100).toFixed(0)}%`
                 ),
         }
-        console.log('hit2')
         axios.put(signedRequest, file, options).then(res => {
-            console.log(res)
-            setProfile_Pic(res.data.url)
-            setIsUploading(false)
+            axios.put('/api/user/update/pic', { url }).then(res => {
+                console.log(res.data)
+                setProfile_Pic(url)
+                setIsUploading(false)
+                props.updateUser(res.data)
+            }).catch(err => {
+                console.log(err.response.data)
+                setIsUploading(false)
+            })
         }).catch(err => {
             console.log(err.response)
+            setIsUploading(false)
         })
     }
 
@@ -95,17 +95,23 @@ function EditProfile(props) {
                 <h1 className='team-projects-title'>Edit User Info</h1>
                 <div className='team-project-line'></div>
             </div>
-            {loading ? <h1>Finding Info...</h1>
+            {loading ?
+                <div className='loading-dot-box'>
+                    <h1 className='loading-text'>Finding your Info</h1>
+                    <div className='loading-dot-1'></div>
+                    <div className='loading-dot-2'></div>
+                    <div className='loading-dot-3'></div>
+                </div>
                 :
                 <>
                     {isUploading ?
                         <div className='progress-box'>
-                            <CircleLoader id='edit-profile-circle' />
+                            <ScaleLoader id='edit-profile-circle' />
                             <h1 className='progress-percent'>{progress}</h1>
                         </div>
                         :
                         <div className='pic-update-container'>
-                            <img className='edit-profile-pic' src={profile_pic ? profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile' />
+                            <img className={profile_pic ? 'edit-profile-pic' : 'edit-default-pic'} src={profile_pic ? profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile' />
                             <img onClick={() => setUpload(!upload)} className='add-icon' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/add.png' alt='add' />
                             {!upload ? null :
                                 <div>

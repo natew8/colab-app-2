@@ -15,8 +15,3 @@ SET role = $4
 WHERE id = $1
 AND role <> $4
 returning *;
-
--- UPDATE profile_pic
--- SET profile_pic = $5
--- WHERE id = $1
--- AND profile_pic <> $5;

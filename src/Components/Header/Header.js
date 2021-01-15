@@ -21,7 +21,7 @@ function Header(props) {
                     {props.username}
                 </h2>
                 <Link to='/user/profile'>
-                    <img className={props.profilePic ? 'profile-pic' : 'default-pic'} src={props.profilePic ? props.profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile_pic' />
+                    <img className={props.profilePic ? 'main-profile-pic' : 'default-pic'} src={props.profilePic ? props.profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile_pic' />
                 </Link>
             </div>
         </header >

@@ -81,7 +81,13 @@ function TeamBuild(props) {
     // console.log(mappedTeam)
     return (
         <div className='team-build-container'>
-            {loading ? <h1>Loading...</h1>
+            {loading ?
+                <div className='loading-dot-box'>
+                    <h1 className='loading-text'>loading</h1>
+                    <div className='loading-dot-1'></div>
+                    <div className='loading-dot-2'></div>
+                    <div className='loading-dot-3'></div>
+                </div>
                 :
                 <React.Fragment>
                     <div className='build-team-header'>

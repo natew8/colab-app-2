@@ -55,14 +55,14 @@ function Login(props) {
                     </p>
                     <img className='login-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabLogoAllBlack.png' alt=' Logo' />
                     <h1 className='welcome-message'>Welcome Back</h1>
-                    <form className='auth-reg-log-form' >
+                    <form type='submit' onSubmit={() => userLogin()} className='auth-reg-log-form' >
                         <input className={emptyError ? 'input-error' : 'input-field'} type='text' placeholder='email' value={email} onChange={(e) => handleEmail(e.target.value)} />
                         {emptyError && <h6 className='required-field'>*</h6>}
                         <input className={emptyError ? 'input-error' : 'input-field'} type='password' placeholder='password' value={password} onChange={e => handlePassword(e.target.value)} />
                         {emptyError && <h6 className='required-field'>*</h6>}
                         {emptyError && <p className='error-message'>{emptyError}</p>}
                         {error && <p className='error-message'>{error}</p>}
-                        <button onClick={() => userLogin()}>Login</button>
+                        <button type='submit' onClick={() => userLogin()}>Login</button>
                     </form>
                     <h4 className='link-to-login'>
                         <Link className='link-to-login' style={{ textDecoration: 'none' }} to='/register'>

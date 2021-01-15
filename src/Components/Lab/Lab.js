@@ -45,7 +45,7 @@ function Lab(props) {
                     <div className='songList-container'>
                         {mappedSongList}
                     </div>
-                    <img className={props.profilePic ? 'profile-pic' : 'lab-default-pic'} src={props.profilePic ? props.profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile_pic' />
+                    <img className={props.profilePic ? 'lab-profile-pic' : 'lab-default-pic'} src={props.profilePic ? props.profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile_pic' />
                     <div className='lower-nav-container'>
                         <Link style={{ textDecoration: 'none' }} to='/user/profile'>
                             <h2 id='home'>Home</h2>

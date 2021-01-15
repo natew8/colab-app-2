@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateUser } from '../../../dux/userReducer'
+import { CircleLoader } from 'react-spinners'
+import { v4 as randomString } from 'uuid'
 import './editProfile.css'
 
 function EditProfile(props) {
@@ -17,6 +19,9 @@ function EditProfile(props) {
     const [editUsername, setEditUsername] = useState(false)
     const [editRole, setEditRole] = useState(false)
     const [loading, setLoading] = useState(true)
+
+    const [isUploading, setIsUploading] = useState(false)
+    const [progress, setProgress] = useState('0%')
 
     useEffect(() => {
         axios.get('/api/auth/me').then(res => {
@@ -43,9 +48,45 @@ function EditProfile(props) {
         })
     }
 
-    // function exitEmailEdit() {
-    //     setEmail()
-    // }
+    function getSignedRequest([file]) {
+        console.log(file)
+        setIsUploading(true)
+        const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`
+        axios.get('/api/s3/picture', {
+            params: {
+                'file-name': fileName,
+                'file-type': file.type,
+            }
+        }).then(res => {
+            console.log(res.data)
+            const { signedRequest, url } = res.data
+            uploadFile(file, signedRequest, url)
+        }).catch(err => {
+            console.log(err.response.data)
+            setIsUploading(false)
+        })
+    };
+
+    function uploadFile(file, signedRequest, url) {
+        console.log(file, signedRequest, url)
+        const options = {
+            headers: {
+                'Content-Type': file.type,
+            },
+            onUploadProgress: (progressEvent) =>
+                setProgress(
+                    `${((progressEvent.loaded / progressEvent.total) * 100).toFixed(0)}%`
+                ),
+        }
+        console.log('hit2')
+        axios.put(signedRequest, file, options).then(res => {
+            console.log(res)
+            setProfile_Pic(res.data.url)
+            setIsUploading(false)
+        }).catch(err => {
+            console.log(err.response)
+        })
+    }
 
 
     return (
@@ -57,17 +98,24 @@ function EditProfile(props) {
             {loading ? <h1>Finding Info...</h1>
                 :
                 <>
-                    <div className='pic-update-container'>
-                        <img className='edit-profile-pic' src={profile_pic ? profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile' />
-                        <img onClick={() => setUpload(!upload)} className='add-icon' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/add.png' alt='add' />
-                        {!upload ? null :
-                            <div>
-                                <label className='upload-input' for='file'>
-                                    {/* Click here to change profile picture */}
-                                    <input onChange={(e) => setProfile_Pic(e.target.value)} type='file' id='file' name='profile_pic' accept='.png, .jpg, .jpeg' />
-                                </label>
-                            </div>}
-                    </div>
+                    {isUploading ?
+                        <div className='progress-box'>
+                            <CircleLoader id='edit-profile-circle' />
+                            <h1 className='progress-percent'>{progress}</h1>
+                        </div>
+                        :
+                        <div className='pic-update-container'>
+                            <img className='edit-profile-pic' src={profile_pic ? profile_pic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile' />
+                            <img onClick={() => setUpload(!upload)} className='add-icon' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/add.png' alt='add' />
+                            {!upload ? null :
+                                <div>
+                                    <label className='upload-input' for='file'>
+                                        {/* Click here to change profile picture */}
+                                        <input onChange={(e) => getSignedRequest(e.target.files)} type='file' id='file' name='profile_pic' accept='.png, .jpg, .jpeg' />
+                                    </label>
+                                </div>}
+                        </div>
+                    }
                     <form className='input-fields-container'>
                         <div className='edit-info-container'>
                             <h2 className='label'>Email:</h2>

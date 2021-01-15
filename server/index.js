@@ -8,6 +8,7 @@ const projectCtrl = require('./controllers/projects')
 const songCtrl = require('./controllers/songs')
 const convCtrl = require('./controllers/conversations')
 const awsCtrl = require('./controllers/aws')
+const awsPicCtrl = require('./controllers/awsPic')
 
 
 const app = express()
@@ -45,6 +46,7 @@ app.get('/api/project/songList/:project_id', songCtrl.getAllSongsInProject)
 app.get('/api/project/song/:song_id', songCtrl.getSong)
 app.post('/api/project/addSong', songCtrl.addSongToProject)
 app.post('/api/project/song/addVersion/:song_id', songCtrl.addSongVersion)
+app.get('/api/project/song/versions/:song_id', songCtrl.getSongVersions)
 // app.put('/api/project/song/editSongInfo', songCtrl.editSongInfo)
 app.delete('/api/project/song/delete/:song_id', songCtrl.deleteSongFromProject)
 
@@ -58,7 +60,7 @@ app.get('/api/project/song/conversation/comments/:convo_id', convCtrl.getComment
 
 ///AWS enpoint
 app.get('/api/s3', awsCtrl.getS3)
-
+app.get('/api/s3/picture', awsPicCtrl.getS3Pic)
 
 
 massive({

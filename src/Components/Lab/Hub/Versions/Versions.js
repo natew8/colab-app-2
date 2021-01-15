@@ -6,16 +6,27 @@ import { v4 as randomString } from 'uuid'
 import './versions.css'
 
 function Versions(props) {
+    const [versions, setVersions] = useState([])
     const [newUpload, setNewUpload] = useState(false)
     const [isUploading, setIsUploading] = useState(false)
-    const [url, setUrl] = useState('')
+    const [progress, setProgress] = useState('0%')
+    // const [url, setUrl] = useState('')
     const [title, setTitle] = useState('')
     const [error, setError] = useState(false)
 
 
     useEffect(() => {
+        axios.get(`/api/project/song/versions/${props.match.params.song_id}`).then(res => {
+            console.log(res.data)
+            setVersions(res.data)
+        })
+    }, [props.match.params.song_id])
 
-    }, [])
+
+    function setWave(url) {
+        console.log(url)
+    }
+
 
     function goNext(val) {
         setTitle(val)
@@ -24,7 +35,6 @@ function Versions(props) {
     function setClose() {
         setNewUpload(false)
         setTitle('')
-        setUrl('')
         setError(false)
     }
     function getSignedRequest([file]) {
@@ -48,19 +58,25 @@ function Versions(props) {
         console.log(file, signedRequest, url)
         const options = {
             headers: {
-                'Content-Type': file.type
-            }
+                'Content-Type': file.type,
+            },
+            onUploadProgress: (progressEvent) =>
+                setProgress(
+                    `${((progressEvent.loaded / progressEvent.total) * 100).toFixed(0)}%`
+                ),
         }
         console.log('hit2')
         axios.put(signedRequest, file, options).then(res => {
-            console.log('hit3')
-            // setUrl(res.url)
-            // axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url: res.url }).then(ver => {
-            //     setIsUploading(false)
-            //     setUrl(ver.url)
-            // }).catch(err => {
-            //     console.log(err)
-            // })
+            console.log(res.data)
+            axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url }).then(ver => {
+                console.log(ver.data)
+                setWave(ver.audio_file)
+                setNewUpload(false)
+                setTitle('')
+                setIsUploading(false)
+            }).catch(err => {
+                console.log(err)
+            })
         }).catch(err => {
             console.log(err.response)
             setError(true)
@@ -69,13 +85,26 @@ function Versions(props) {
     }
 
 
+    const mappedVersions = versions.map((ver, index) => {
+        return (
+            <div onDoubleClick={() => setWave(ver.audio_file)} key={index} className='version-container'>
+                <h4>{ver.version_title}</h4>
+            </div>
+        )
+    })
+
+
+
     return (
         <div className='versions-container'>
             <h4 className='version-header'>Song Files</h4>
             {newUpload ?
                 <div className='version-loading-container'>
                     {isUploading ?
-                        <CircleLoader />
+                        <>
+                            <CircleLoader />
+                            <h1>{progress}</h1>
+                        </>
                         :
                         <>
                             <h3 className='version-title-header'>Song Title...</h3>
@@ -103,12 +132,13 @@ function Versions(props) {
                         <h1>Loading...</h1>
                         :
                         <React.Fragment>
-                            <h3>Mapped Versions</h3>
+                            {mappedVersions}
                         </React.Fragment>
                     }
                 </div>
             }
             {error ? <h1>Upload failed, please try again.</h1> : null}
+
             <div className='version-footer'>
                 {!newUpload ?
                     <button

@@ -114,3 +114,17 @@
 .cancel-x:hover{
     cursor: pointer;
 }
+
+
+.progress-box{
+    margin-left: 5rem;
+    margin-top: 5rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.progress-percent{
+    width: 4rem;
+    margin: 2rem;
+}

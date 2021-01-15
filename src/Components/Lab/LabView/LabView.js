@@ -11,6 +11,8 @@ function LabView(props) {
     const [artist, setArtist] = useState('')
     const [convoView, setConvoView] = useState(true)
 
+    const [currentVersion, setCurrentVersion] = useState('')
+
     useEffect(() => {
         axios.get(`/api/project/song/${props.match.params.song_id}`).then(res => {
             setTitle(res.data.title)
@@ -18,13 +20,18 @@ function LabView(props) {
         })
     }, [props.match.params.song_id])
 
+    function setVersion(url) {
+        setCurrentVersion(url)
+    }
+
+
     function setView(bool) {
         setConvoView(bool)
     }
     return (
         // <h1>Hey</h1>
         <div className='lab-view'>
-            <Waveform artist={artist} title={title} />
+            <Waveform version={currentVersion} artist={artist} title={title} />
             <React.Fragment>
                 <React.Fragment>
                     <div className='lab-nav-bar'>

@@ -98,9 +98,7 @@
     text-align: left;
     color: #d7263d;;
 }
-.loading-logo{
-    width: 100px;
-}
+
 .error-message{
     color: #d7263d;
 }
@@ -117,6 +115,20 @@ button:hover{
 }
 h1{
     margin-bottom: 10px;
+}
+.loading-logo{
+    width: 100px;
+    rotate: 0;
+    animation-name: logo;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes logo{
+    20% { transform: rotate(45deg); } 
+    40% { transform: rotate(-30deg); } 
+    60% { transform: rotate(20deg); } 
+    80% { transform: rotate(-10deg); } 
+    100% { transform: rotate(0deg); } 
 }
 
 @media(max-width:995){

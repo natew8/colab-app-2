@@ -15,20 +15,17 @@
 /*Login Styling*/
 .login-view{
     overflow-y: hidden;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(180deg, #1C6B85 10%, #071013 100%), #F4F6F6;
-    background-repeat:no-repeat;
-    background-position: bottom;
+    height: inherit;
+    background: radial-gradient(farthest-corner, #1C6B85 10%, #071013 100%), #F4F6F6;
 }
 .logging-in{
     margin-top: 200px;
 }
 .login-container{
     position: relative;
-    top: 200px;
+    top: 220px;
     background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 5px 5px 0px #071013; */
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
@@ -40,9 +37,9 @@
 }
 .register-container{
     position: relative;
-    top: 150px;
+    top: 165px;
     background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25); */
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
@@ -111,7 +108,6 @@ button{
 button:hover{
     cursor: pointer;
     background-color: #e98902;
-    box-shadow: 1px 2px 7px #071013;
 }
 h1{
     margin-bottom: 10px;

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 import './newSong.css'
 
@@ -32,7 +33,7 @@ function NewSong(props) {
 
 
     return (
-        <div className='add-song-container'>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }} className='add-song-container'>
             <h1 className='add-song-title'>Create new Song
             <h4 onClick={() => props.newSong()}>X</h4>
             </h1>
@@ -90,7 +91,7 @@ function NewSong(props) {
                 <textarea onChange={(e) => setNotes(e.target.value)} className='notes-text-area' placeholder='Notes' />
             </div>
             <button onClick={() => createSong()} className='add-song-button'>Add Song</button>
-        </div >
+        </motion.div >
     )
 }
 

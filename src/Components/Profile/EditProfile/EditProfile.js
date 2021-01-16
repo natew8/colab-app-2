@@ -8,7 +8,6 @@ import { v4 as randomString } from 'uuid'
 import './editProfile.css'
 
 function EditProfile(props) {
-    console.log(props.updateUser)
     const [username, setUsername] = useState(props.username)
     const [role, setRole] = useState('')
     const [email, setEmail] = useState('')
@@ -34,9 +33,11 @@ function EditProfile(props) {
 
 
     function updateUserInfo() {
-        console.log(email, username, role, profile_pic)
-        axios.put('/api/user/update', { email, username, role, profile_pic }).then((res) => {
+        axios.put('/api/user/update', { email, username, role }).then((res) => {
             props.updateUser(res.data)
+            setUsername(res.data.username)
+            setEmail(res.data.email)
+            setRole(res.data.role)
             setUpload(false)
             setEditEmail(false)
             setEditUsername(false)

@@ -26,13 +26,22 @@ function LabView(props) {
                     setNoVersion(false)
                     setCurrentVersion(res.data[0].audio_file)
                 }
+            }).catch(err => {
+                console.log(err.response.data)
             })
         })
     }, [props.match.params.song_id])
 
-    function setVersion(url) {
-        setCurrentVersion(url)
-        setNoVersion(false)
+    function setVersion(i) {
+        setNoVersion(true)
+        axios.get(`/api/project/song/versions/${props.match.params.song_id}`).then(res => {
+            if (!res.data.length) {
+                setNoVersion(true)
+            } else {
+                setNoVersion(false)
+                setCurrentVersion(res.data[i].audio_file)
+            }
+        })
     }
 
 
@@ -49,13 +58,13 @@ function LabView(props) {
             <React.Fragment>
                 <React.Fragment>
                     <div className='lab-nav-bar'>
-                        <h2 onClick={() => setView(true)} className={convoView ? 'current-lab-nav-item' : 'lab-nav-item'}>Hub</h2>
-                        <h2 onClick={() => setView(false)} className={!convoView ? 'current-lab-nav-item' : 'lab-nav-item'}>Song Details</h2>
+                        {/* <h2 onClick={() => setView(true)} className={convoView ? 'current-lab-nav-item' : 'lab-nav-item'}>Hub</h2> */}
+                        {/* <h2 onClick={() => setView(false)} className={!convoView ? 'current-lab-nav-item' : 'lab-nav-item'}>Song Details</h2> */}
                     </div>
                     {convoView ?
                         <Hub setVersion={setVersion} song_id={props.match.params.song_id} />
                         :
-                        <SongDeets song_id={props.match.params.song_id} />
+                        {/* <SongDeets song_id={props.match.params.song_id} /> */ }
                     }
                 </React.Fragment>
             </React.Fragment>

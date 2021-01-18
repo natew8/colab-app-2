@@ -64,11 +64,14 @@ module.exports = {
 
     updateUserInfo: async (req, res) => {
         const db = req.app.get('db')
+        console.log(req.body)
         const { id } = req.session.user
         try {
-            const [update] = await db.colab_user.save({ id, ...req.body })
-            res.status(200).send(update)
+            const update = await db.colab_user.save({ id, ...req.body })
+            console.log(update)
+            return res.status(200).send(update)
         } catch (err) {
+            console.log(err)
             res.status(409).send(err)
         }
     },

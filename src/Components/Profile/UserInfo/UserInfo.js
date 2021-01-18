@@ -35,7 +35,7 @@ function UserInfo(props) {
                     <img className='icon' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/free-exit-logout-icon-2857-thumb.png' alt='logout' />
                     <h2 onClick={() => logOutUser()} className='logout-link'>Logout</h2>
                 </div>
-                <button id='user-info-new-project-button'>New Project</button>
+                <Link to='/user/profile/newProject'><button id='user-info-new-project-button'>New Project</button></Link>
             </div>
         </div>
     )

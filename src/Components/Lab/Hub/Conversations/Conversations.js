@@ -41,6 +41,8 @@ function Conversations(props) {
             setNewConvo(false)
             setNoConvo(false)
             setTime('0:00')
+        }).catch(err => {
+            console.log(err.response.data)
         })
     }
     const mappedConvo = conversations.map((convo, index) => {

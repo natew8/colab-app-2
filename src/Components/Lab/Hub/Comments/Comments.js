@@ -39,7 +39,6 @@ function Comments(props) {
 
     function postComment() {
         axios.post(`/api/project/song/conversation/newComment/${props.convoId}`, { comment }).then(newCom => {
-            console.log(newCom.data)
             setComment('')
             setComments(newCom.data)
         })

@@ -145,6 +145,7 @@
 .back-button:hover{
     cursor: pointer;
 }
+
 .pause-button{
     position: relative;
     z-index: 3000;
@@ -158,6 +159,19 @@
     z-index: 3000;
     width: 36px;
     margin-top: auto;
+    margin-right: 1rem;
+}
+.stop-button{
+    filter: brightness(.8);
+    height: 39px;
+    z-index: 3000;
+}
+.stop-button:hover{
+    cursor: pointer;
+}
+.stop-button:active{
+    filter: drop-shadow(0px 2px 5px #ff9505);
+
 }
 .pause-button:hover{
     cursor: pointer;

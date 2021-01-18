@@ -17,7 +17,6 @@ function Versions(props) {
 
     useEffect(() => {
         axios.get(`/api/project/song/versions/${props.match.params.song_id}`).then(res => {
-            console.log(res.data)
             setVersions(res.data)
         })
     }, [props.match.params.song_id])
@@ -69,6 +68,7 @@ function Versions(props) {
         axios.put(signedRequest, file, options).then(res => {
             axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url }).then(ver => {
                 console.log(ver.data)
+                props.setVersion(ver.data.length - 1)
                 setVersions([...versions, ver.data])
                 setNewUpload(false)
                 setTitle('')
@@ -87,7 +87,7 @@ function Versions(props) {
 
     const mappedVersions = versions.map((ver, index) => {
         return (
-            <div onClick={() => setWave(ver.audio_file)} key={index} color={alternatingBackground[index % 2 ? alternatingBackground[0] : alternatingBackground[1]]} className='version-container'>
+            <div onClick={() => props.setVersion(index)} key={index} color={alternatingBackground[index % 2 ? alternatingBackground[0] : alternatingBackground[1]]} className='version-container'>
                 <img src='https://colab-image-assets.s3-us-west-1.amazonaws.com/2470574-200.png' alt='wave' className='waveform-icon' />
                 <h4 className='version-list-title'>{ver.version_title}</h4>
             </div>

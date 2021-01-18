@@ -60,6 +60,9 @@ class Waveform extends Component {
     pause = () => {
         this.wavesurfer.pause()
     }
+    stop = () => {
+        this.wavesurfer.stop()
+    }
 
     forward = () => {
         this.wavesurfer.skipForward(10)
@@ -74,6 +77,7 @@ class Waveform extends Component {
     }
 
     render() {
+
         return (
             <div className='audio-control-container' >
                 <div className='song-info-header'>
@@ -98,6 +102,7 @@ class Waveform extends Component {
                         </div>
                         <img className='pause-button' onClick={() => this.pause()} src='https://colab-image-assets.s3-us-west-1.amazonaws.com/pauseButton.png' alt='pause' />
                         <img className='play-button' onClick={() => this.play()} src='https://colab-image-assets.s3-us-west-1.amazonaws.com/playButton.png' alt='play' />
+                        <img className='stop-button' onClick={() => this.stop()} src='https://colab-image-assets.s3-us-west-1.amazonaws.com/StopButton.png' alt='play' />
                         <div className='volume-controls-container'>
                             <input className='volume' onChange={(e) => this.setVolume(e.target.value)} value={this.state.volume} id="volume" type="range" min="0" max="1" step="0.01" />
                         </div>

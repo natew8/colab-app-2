@@ -19,6 +19,7 @@ function SongList(props) {
             setSongName(res.data.song_title)
         })
     }, [])
+
     function removeSong(title) {
         setSongName(title.song_title)
         setSongId(title.id)

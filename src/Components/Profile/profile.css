@@ -22,16 +22,16 @@
 #div-line-decor{
     position: absolute;
     left:0;
-    top: 2.4rem;
+    top: 2.5rem;
     bottom: 0px;
-    border-left:2.9px solid #c6c6c670 ;
+    border-left:1px solid #c6c6c670 ;
 }
 #div-line-decor-right{
     position: absolute;
     right:0;
-    top: 2.4rem;
+    top: 2.5rem;
     bottom: 0px;
-    border-left:2.9px solid #c6c6c670 ;
+    border-left:1px solid #c6c6c670 ;
 }
 
 .nav-container{
@@ -39,7 +39,7 @@
     width: 100vw;
     height: fit-content;
     margin-top: 40px;
-    border-bottom: 2.9px solid #c6c6c670;
+    border-bottom: 1px solid #c6c6c670;
     box-sizing: border-box;
     padding: 0px;
 }
@@ -59,12 +59,12 @@
     height: 1.25em;
     font-size: 1.5rem;
     margin-right: 60px;
-    margin-bottom: -3px;
+    margin-bottom: -1px;
     color: #071013;
     box-sizing: border-box;
 }
 .nav-item:hover{
-    border-bottom: 2.9px solid #ff9505;
+    border-bottom: 1px solid #ff9505;
     cursor: pointer;
     color: #ff9505;
     height: 1.25em;
@@ -76,7 +76,7 @@
     font-size: 1.5rem;
     text-decoration: none;
     color: #ff9505;
-    border-bottom: 2.9px solid #ff9505;
+    border-bottom: 1px solid #ff9505;
 }
 .side-bar{
     position: absolute;
@@ -100,7 +100,7 @@
 }
 
 .profile-bottom-line{
-    border-bottom: 2.6px solid #c6c6c670;
+    border-bottom: 1px solid #c6c6c670;
 }
 @media(max-width:750px){
     .profile{

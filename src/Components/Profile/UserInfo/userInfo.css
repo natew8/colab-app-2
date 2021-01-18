@@ -13,7 +13,7 @@
 }
 .profile-pic{
     border-radius: 100% 100%;
-    border: 2.6px solid #c6c6c6 ;
+    /* border: 1px solid #c6c6c6 ; */
     background:linear-gradient(170deg, #1C6B85 10%, #071013 91.17%), #F4F6F6;
     height: 10rem;
     width: 10rem;
@@ -57,7 +57,7 @@
     cursor: pointer;
 }
 .user-info-line{
-    border: 1px solid #071013;
+    border-top: 1px solid #c6c6c677;
 }
 .username-info{
     text-transform: none;

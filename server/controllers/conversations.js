@@ -9,9 +9,12 @@ module.exports = {
         const db = req.app.get('db')
         const { subject, time, song_version, body } = req.body
         const { song_id } = req.params
-        const convo = await db.conversations.create_conversation([req.session.user.id, subject, time, body, song_version, song_id])
-
-        res.status(200).send(convo)
+        try {
+            const convo = await db.conversations.create_conversation([req.session.user.id, subject, time, body, song_version, song_id])
+            res.status(200).send(convo)
+        } catch (err) {
+            res.status(500).send(err)
+        }
     },
     getSingleConversation: async (req, res) => {
         const db = req.app.get('db')

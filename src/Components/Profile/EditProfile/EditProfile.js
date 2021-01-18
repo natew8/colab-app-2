@@ -77,7 +77,6 @@ function EditProfile(props) {
         }
         axios.put(signedRequest, file, options).then(res => {
             axios.put('/api/user/update/pic', { url }).then(res => {
-                console.log(res.data)
                 setProfile_Pic(url)
                 setIsUploading(false)
                 props.updateUser(res.data)

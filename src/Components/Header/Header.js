@@ -9,7 +9,6 @@ import axios from 'axios'
 function Header(props) {
     useEffect(() => {
         axios.get('/api/auth/me').then(res => {
-            console.log(res.data)
             props.updateUser(res.data)
         })
     }, [])

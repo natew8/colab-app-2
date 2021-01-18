@@ -9,8 +9,7 @@ module.exports = {
         const db = req.app.get('db')
         const { subject, time, song_version, body } = req.body
         const { song_id } = req.params
-        const date = new Date
-        const convo = await db.conversations.create_conversation([req.session.user.id, subject, time, body, date, song_version, song_id])
+        const convo = await db.conversations.create_conversation([req.session.user.id, subject, time, body, song_version, song_id])
 
         res.status(200).send(convo)
     },
@@ -30,7 +29,6 @@ module.exports = {
         const db = req.app.get('db')
         const { convo_id } = req.params
         const { comment } = req.body
-        // const date = new Date
         const newComment = await db.conversations.add_comment([convo_id, req.session.user.id, comment])
         res.status(200).send(newComment)
     }

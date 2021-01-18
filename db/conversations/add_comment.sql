@@ -1,5 +1,5 @@
-INSERT INTO comments (convo_id, author_id, comment, date_created)
-VALUES ($1, $2, $3, NOW());
+INSERT INTO comments (convo_id, author_id, comment)
+VALUES ($1, $2, $3);
 
 
 SELECT cu.profile_pic, cu.username, co.comment, co.date_created FROM comments co

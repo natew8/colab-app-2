@@ -1,14 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import './teamBuild.css'
+import './teamEdit.css'
 
-function TeamBuild(props) {
+function TeamEdit(props) {
     const [users, setUsers] = useState([])
     const [team, setTeam] = useState([])
     const [filter, setFilter] = useState('')
     const [loading, setLoading] = useState(true)
-    const project_id = props.projectId
+    const project_id = props.match.params.projectId
     const project_creator_id = props.creatorId
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function TeamBuild(props) {
 
     function removeUser(users_id) {
         console.log(users_id)
-        axios.delete(`/api/project/remove/${users_id}/${props.projectId}/${props.creatorId}`).then(res => {
+        axios.delete(`/api/project/remove/${users_id}/${project_id}/${project_creator_id}}`).then(res => {
             const newArr = [...team]
             const targetI = newArr.findIndex((userObj) => {
                 return userObj.id === users_id
@@ -80,7 +80,7 @@ function TeamBuild(props) {
 
     // console.log(mappedTeam)
     return (
-        <div className='team-build-container'>
+        <div className='team-edit-container'>
             {loading ?
                 <div className='loading-dot-box'>
                     <h1 className='loading-text'>loading</h1>
@@ -91,7 +91,7 @@ function TeamBuild(props) {
                 :
                 <React.Fragment>
                     <div className='build-team-header'>
-                        <h1 className='build-team-title'>build your team...</h1>
+                        <h1 className='build-team-title'>Edit your team</h1>
                         {/* <div className='team-project-line'></div> */}
                     </div>
                     <input onChange={(e) => handleFilter(e.target.value)} type='text' className='filter-users-input' placeholder='Search Users' />
@@ -110,4 +110,4 @@ function TeamBuild(props) {
         </div>
     )
 }
-export default withRouter(TeamBuild)
+export default withRouter(TeamEdit)

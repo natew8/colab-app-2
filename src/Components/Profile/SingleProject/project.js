@@ -4,9 +4,9 @@ import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './project.css'
 import NewSong from './NewSong/NewSong'
+import EditProject from './EditProject/EditProject'
 
 function Project(props) {
-    // const [projectInfo, setProjectInfo] = useState({})
     const [deadline, setDeadline] = useState('')
     const [creator, setCreator] = useState('')
     const [creatorId, setCreatorId] = useState(0)
@@ -14,15 +14,15 @@ function Project(props) {
     const [songs, setSongs] = useState([])
     //New Song State
     const [newSong, setNewSong] = useState(false)
+    const [editProject, setEditProject] = useState(false)
 
     useEffect(() => {
-        axios.get(`/api/projects/project/${props.match.params.id}`).then(res => {
-            // setProjectInfo(res.data)
+        axios.get(`/api/projects/project/${props.match.params.projectId}`).then(res => {
             setDeadline(res.data.deadline)
             setCreator(res.data.project_creator)
             setCreatorId(res.data.project_creator_id)
             setCreated(res.data.created)
-            axios.get(`/api/project/songList/${props.match.params.id}`).then(res => {
+            axios.get(`/api/project/songList/${props.match.params.projectId}`).then(res => {
                 setSongs(res.data)
             })
         })
@@ -50,46 +50,46 @@ function Project(props) {
 
 
     return (
-        <div className='project-details-container'>
-            <div id='header'>
-                <img onClick={() => goBack()} className='back-arrow-project' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/backArrow.png' alt='back' />
-                <h1 className='single-title'>{props.match.params.project_title}</h1>
-                <div className='team-project-line'></div>
-                <div className='project-details-header'>
-                    <h2 className='details-header-item'>Project Creator: {creator}</h2>
-                    {/* <h2 className='details-header-item'>Project Creator: Blah</h2> */}
-                    <div className='barrier-line'></div>
-                    <h2 className='details-header-item'>Deadline: {deadline}</h2>
-                    {/* <h2 className='details-header-item'>Deadline: 02/29/00</h2> */}
-                    <div className='barrier-line'></div>
-                    <h2 className='details-header-item'>Created On: {created}</h2>
-                    {/* <h2 className='details-header-item'>Created On: 04/28/2020 </h2> */}
-                </div>
-            </div>
-            {newSong ?
-                <NewSong creatorId={creatorId} newSong={setNewSong} />
+        <>
+            {editProject ?
+                <EditProject />
                 :
-                <React.Fragment>
-                    {mappedSongs}
-                </React.Fragment>
+                <div className='projects-container'>
+                    <div id='header'>
+                        <img onClick={() => goBack()} className='back-arrow-project' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/backArrow.png' alt='back' />
+                        <h1 className='single-title'>{props.match.params.project_title}</h1>
+                        <div className='team-project-line'></div>
+                        <div className='project-details-header'>
+                            <h2 className='details-header-item'>Project Creator: {creator}</h2>
+                            {/* <h2 className='details-header-item'>Project Creator: Blah</h2> */}
+                            <div className='barrier-line'></div>
+                            <h2 className='details-header-item'>Deadline: {deadline}</h2>
+                            {/* <h2 className='details-header-item'>Deadline: 02/29/00</h2> */}
+                            <div className='barrier-line'></div>
+                            <h2 className='details-header-item'>Created On: {created}</h2>
+                            {/* <h2 className='details-header-item'>Created On: 04/28/2020 </h2> */}
+                        </div>
+                    </div>
+                    {newSong ?
+                        <NewSong creatorId={creatorId} newSong={setNewSong} />
+                        :
+                        <>{mappedSongs}</>
+                    }
+                    <div className='project-footer'>
+                        <h4 onClick={() => setNewSong(!newSong)} className='footer-nav-item-2'>Add Song</h4>
+                        <h4 onClick={() => setEditProject(true)} className='footer-nav-item'>Edit Project Info</h4>
+                    </div>
+                </div >
             }
-            <div className='project-footer'>
-                <div className='project-footer-left'>
-                    <h4 onClick={() => setNewSong(!newSong)} className='footer-nav-item-2'>Add Song</h4>
-                    <h4 className='footer-nav-item-2'>Edit Project Info</h4>
-                </div>
-                <div className='project-footer-right'>
-                    <h4 className='footer-nav-item'>delete project</h4>
-                </div>
-            </div>
-        </div >
+        </>
     )
 }
 
 function mapStateToProps(reduxState) {
     return {
         username: reduxState.username,
-        profilePic: reduxState.profilePic
+        profilePic: reduxState.profilePic,
+        id: reduxState.id
     }
 }
 export default withRouter(connect(mapStateToProps)(Project))

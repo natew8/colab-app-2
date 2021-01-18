@@ -57,6 +57,15 @@
     border-radius: 3px 3px 0 0;
     z-index: 800;
 }
+#waveDisplay-2{
+    margin-top: 5rem;
+    position: relative;
+    padding: 5px;
+    align-items: center;
+    border: 2px solid #c6c6c6;
+    border-radius: 3px 3px 0 0;
+    z-index: 800;
+}
 #wave-timeline{
     background-color: #ff9505;
     border: 2px solid #c6c6c6;

@@ -1,16 +1,15 @@
-.team-build-container{
-    border: 2px solid #c6c6c6;
+.team-edit-container{
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 75%;
+    width: 80%;
     /* height: 34.25rem; */
     padding: 0px 4rem;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1rem;
-    margin-bottom: .6rem;
+    margin-bottom: 1rem;
 }
 
 .build-team-title{
@@ -36,7 +35,7 @@
 .user-map-container{
     overflow-y: scroll;
     height: 27.2rem;
-    border: 2px solid #c6c6c6;
+    border: 2px solid #071013;
     border-radius: 3px;
     padding: 0px 5px;
     width: 24rem;
@@ -95,8 +94,8 @@
 .team-container{
     overflow-y: scroll;
     height: 27.2rem;
-    border: 2px solid #c6c6c6;
-    border-radius: 5px;
+    border: 2px solid #071013;
+    border-radius: 3px;
     padding: 0px 5px;
     width: 24rem;
     margin-bottom: 1rem;

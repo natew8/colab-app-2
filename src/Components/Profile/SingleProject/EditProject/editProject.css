@@ -1,0 +1,78 @@
+/*main container and header*/
+.edit-project-container{
+    position: absolute;
+    top: 4rem;
+    right: 15px;
+    width: 1040px;
+    background-color: #f4f6f6;
+    padding: 0px .6rem;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 3px 7px #071013;
+    height: 46rem;
+    overflow-y:scroll;
+}
+#edit-projects-header{
+    margin-left: 0px;
+    margin-right: -8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-projects-title{
+    text-align: left;
+    margin-top: .6rem;
+    margin-left: 7px;
+    margin-right: 7px;
+    font-size: 20px;
+    color:#071013;
+
+}
+
+.edit-project-line{
+    margin-top: .6rem;
+    border: 1px solid #071013;
+}
+/* Info Container */
+.project-info-box{
+    box-sizing: border-box;
+    border: 2px solid #c6c6c6;
+    height: fit-content;
+    width: 99.9%;
+    border-radius: 3px;
+    margin-top: .6rem;
+}
+.project-info-box>h1{
+    text-align: left;
+    margin: 0px;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+    padding:0px .6rem;
+
+}
+.project-info-box>h2{
+    color: #071013;
+    font-family: Nunito;
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    margin-bottom: .6rem;
+    font-size: 1rem;
+    padding: 0px .6rem;
+}
+h2>h2{
+    margin: 0px;
+    margin-left: .6rem;
+    font-weight: 500;
+    color: #071013;
+}
+
+/*Lower Window*/
+.edit-project-window{
+    border: 2px solid #c6c6c6;
+    border-radius: 3px;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+    height: fill;
+}

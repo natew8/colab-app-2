@@ -1,5 +1,5 @@
 .colab-header{
-    background-color:#11323e ;
+    background-color:#11323e9b ;
     position: relative;
     padding: 5px;
     display: flex;
@@ -11,6 +11,12 @@
 
 .main-header-logo{
     margin-left:1.7rem;
+    position: relative;
+    height: 55px;
+    filter:drop-shadow(2px 2px 5px #071013)
+}
+.main-header-logo-right{
+    margin-right:1.7rem;
     position: relative;
     height: 55px;
     filter:drop-shadow(2px 2px 5px #071013)
@@ -38,8 +44,9 @@
     border-radius: 50%;
     
 }
-.header-username>h2{
+.main-user-info>h2{
     color: #f4f6f6;
     font-family: Roboto Condensed;
-    font-weight: bold;
+    font-weight: 300;
+    text-transform: none;
 }

@@ -33,7 +33,7 @@ function NewSong(props) {
 
 
     return (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }} className='add-song-container'>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='add-song-container'>
             <h1 className='add-song-title'>Create new Song
             <h4 onClick={() => props.newSong()}>X</h4>
             </h1>

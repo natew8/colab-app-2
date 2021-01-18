@@ -5,13 +5,14 @@ import Waveform from '../Waveform/Waveform'
 import SongDeets from '../SongDeets/SongDeets'
 import Hub from '../Hub/Hub'
 import './labview.css'
-// import WaveForm2 from '../Waveform/WaveForm2'
+import WaveForm2 from '../Waveform/WaveForm2'
 
 function LabView(props) {
     const [title, setTitle] = useState('')
     const [artist, setArtist] = useState('')
     const [convoView, setConvoView] = useState(true)
 
+    const [noVersion, setNoVersion] = useState(true)
     const [currentVersion, setCurrentVersion] = useState('')
 
     useEffect(() => {
@@ -22,6 +23,7 @@ function LabView(props) {
                 if (!res.data.length) {
                     setCurrentVersion('')
                 } else {
+                    setNoVersion(false)
                     setCurrentVersion(res.data[0].audio_file)
                 }
             })
@@ -30,6 +32,7 @@ function LabView(props) {
 
     function setVersion(url) {
         setCurrentVersion(url)
+        setNoVersion(false)
     }
 
 
@@ -38,8 +41,11 @@ function LabView(props) {
     }
     return (
         <div className='lab-view'>
-            <Waveform version={currentVersion} artist={artist} title={title} />
-            {/* <WaveForm2 version={currentVersion} artist={artist} title={title} /> */}
+            {noVersion ?
+                <WaveForm2 version={currentVersion} artist={artist} title={title} />
+                :
+                <Waveform version={currentVersion} artist={artist} title={title} />
+            }
             <React.Fragment>
                 <React.Fragment>
                     <div className='lab-nav-bar'>

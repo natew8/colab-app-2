@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import moment from 'moment'
 import './comments.css'
 
@@ -28,7 +29,7 @@ function Comments(props) {
             setUser(res.data.username)
             setComment('')
         })
-    }, [props.convoId, props.song_id, props.project_id])
+    }, [props.convoId, props.match.params.song_id])
 
     useEffect(() => {
         axios.get(`/api/project/song/conversation/comments/${props.convoId}`).then(com => {
@@ -83,12 +84,20 @@ function Comments(props) {
                 {commentsMapped}
             </div>
             <div className='message-input-footer'>
-                <img className='comment-compose-img' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png' alt='user' />
+                <img className={props.profilePic ? 'comment-compose-img' : 'comment-compose-default'} src={props.profilePic ? props.profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='user' />
                 <form onSubmit={() => postComment()} className='comment-form'>
-                    <input onChange={(e) => setComment(e.target.value)} className='comment-input-field' value={comment} type='text' placeholder='write a comment' />
+                    <input onChange={(e) => setComment(e.target.value)} className='comment-input-field' value={comment} type='text' placeholder='write a comment...' />
                 </form>
             </div>
         </div>
     )
 }
-export default withRouter(Comments)
+
+function mapStateToProps(reduxState) {
+    return {
+        username: reduxState.username,
+        profilePic: reduxState.profilePic
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Comments))

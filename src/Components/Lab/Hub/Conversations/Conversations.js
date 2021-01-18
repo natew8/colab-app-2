@@ -9,6 +9,7 @@ function Conversations(props) {
     const [conversations, setConversations] = useState([])
     const [newConvo, setNewConvo] = useState(false)
     const [convoId, setConvoId] = useState(0)
+    const [noConvo, setNoConvo] = useState(false)
 
     const [subject, setSubject] = useState('')
     const [time, setTime] = useState('0:00')
@@ -17,10 +18,13 @@ function Conversations(props) {
 
     useEffect(() => {
         axios.get(`/api/project/song/conversations/${props.match.params.song_id}`).then(res => {
-            setConversations(res.data)
             if (!res.data.length) {
+                setConversations([])
+                setNoConvo(true)
                 setConvoId(0)
             } else {
+                setConversations(res.data)
+                setNoConvo(false)
                 setConvoId(res.data[0].id)
             }
         })
@@ -28,13 +32,14 @@ function Conversations(props) {
 
 
     function closeConvo() {
-        console.log('hey')
         setNewConvo(false)
         setTime('0:00')
     }
     function postConvo() {
         axios.post(`/api/project/song/newConvo/${props.match.params.song_id}`, { subject, time, song_version, body }).then(res => {
+            setConversations([...conversations, res.data])
             setNewConvo(false)
+            setNoConvo(false)
             setTime('0:00')
         })
     }
@@ -55,24 +60,30 @@ function Conversations(props) {
         <React.Fragment>
             <div className='conversations-container'>
                 <h4 className='con-header'>Conversations</h4>
-                {newConvo ?
-                    <form className='new-con-form'>
-                        <label>Subject</label>
-                        <input onChange={(e) => setSubject(e.target.value)} type='text' placeholder='Subject Line' />
-                        <label>Song time</label>
-                        <input onChange={(e) => setTime(e.target.value)} maxLength='4' value={time} type='text' />
-                        <input list='version-list' />
-                        <select value={song_version} onChange={(e) => setSong_Version(e.target.value)} id='version-list'>
-                            {''}
-                        </select>
-                        <label>body</label>
-                        <textarea onChange={(e) => setBody(e.target.value)} className='con-body-input' type='paragraph' placeholder='Message' />
-                        <button onClick={() => postConvo()} className='post-button'>Post</button>
-                    </form>
+                {noConvo && !newConvo ?
+                    <h1 className='mapped-conversations'>Click below to start a new conversation</h1>
                     :
-                    <div className='mapped-conversations'>
-                        {mappedConvo}
-                    </div>
+                    <>
+                        {newConvo ?
+                            <form className='new-con-form'>
+                                <label>Subject</label>
+                                <input onChange={(e) => setSubject(e.target.value)} type='text' placeholder='Subject Line' />
+                                <label>Song time</label>
+                                <input onChange={(e) => setTime(e.target.value)} maxLength='4' value={time} type='text' />
+                                <input list='version-list' />
+                                <select value={song_version} onChange={(e) => setSong_Version(e.target.value)} id='version-list'>
+                                    {''}
+                                </select>
+                                <label>body</label>
+                                <textarea onChange={(e) => setBody(e.target.value)} className='con-body-input' type='paragraph' placeholder='Message' />
+                                <button onClick={() => postConvo()} className='post-button'>Post</button>
+                            </form>
+                            :
+                            <div className='mapped-conversations'>
+                                {mappedConvo}
+                            </div>
+                        }
+                    </>
                 }
                 <div className='con-footer'>
                     {!newConvo ?

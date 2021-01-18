@@ -57,9 +57,10 @@ button{
     background-color: #ff9505;
     margin-bottom: 20px;
     z-index: 1;
+    border: 2px solid #071013;
 }
 .register-button:hover{
-    background-color: #ec900f;
+    background-color: #da8510;
     cursor: pointer;
 }
 .register-button:active{
@@ -69,6 +70,7 @@ button{
     background-color: #f4f6f6;
     margin-bottom: 15px;
     z-index: 1000;
+    border: 2px solid #071013;
 }
 .login-button:hover{
     cursor: pointer;

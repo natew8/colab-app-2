@@ -9,6 +9,7 @@ import axios from 'axios'
 function Header(props) {
     useEffect(() => {
         axios.get('/api/auth/me').then(res => {
+            console.log(res.data)
             props.updateUser(res.data)
         })
     }, [])
@@ -16,14 +17,15 @@ function Header(props) {
     return (
         <header className='colab-header'>
             <img className='main-header-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Asolo.png' alt='Logo' />
-            <div className='main-user-info'>
+            <img className='main-header-logo-right' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Notes.png' alt='Logo' />
+            {/* <div className='main-user-info'>
                 <h2 >
                     {props.username}
                 </h2>
                 <Link to='/user/profile'>
                     <img className={props.profilePic ? 'main-profile-pic' : 'default-pic'} src={props.profilePic ? props.profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='Profile_pic' />
                 </Link>
-            </div>
+            </div> */}
         </header >
     )
 }
@@ -31,7 +33,8 @@ function Header(props) {
 function mapStateToProps(reduxState) {
     return {
         username: reduxState.username,
-        profilePic: reduxState.profilePic
+        profilePic: reduxState.profilePic,
+        id: reduxState.id
     }
 }
 

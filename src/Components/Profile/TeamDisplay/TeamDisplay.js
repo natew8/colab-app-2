@@ -6,11 +6,17 @@ import './teamDisplay.css'
 function TeamDisplay() {
     const [team, setTeam] = useState([])
     const [loading, setLoading] = useState(true)
+    const [noTeam, setNoTeam] = useState(true)
 
     useEffect(() => {
         axios.get('/api/auth/users').then(res => {
-            setTeam(res.data)
-            setLoading(false)
+            if (res.data.length) {
+                setTeam(res.data)
+                setLoading(false)
+                setNoTeam(false)
+            } else {
+                setNoTeam(true)
+            }
         })
     }, [])
     const teamMapped = team.map((element, index) => {
@@ -26,13 +32,18 @@ function TeamDisplay() {
         )
     })
     return (
-        <div className='container-team'>
-            <div className='team-list-header'>
-                <h1 className='your-team'>Your Team</h1>
-                <div className='user-info-line-team'></div>
+        <>
+            {!noTeam ? <div className='container-team'>
+                <div className='team-list-header'>
+                    <h1 className='your-team'>Your Team</h1>
+                    <div className='user-info-line-team'></div>
+                </div>
+                {loading ? <h4>Finding you teammates</h4> : teamMapped}
             </div>
-            {loading ? <h4>Finding you teammates</h4> : teamMapped}
-        </div>
+                :
+                null
+            }
+        </>
     )
 }
 

@@ -20,9 +20,8 @@ module.exports = {
         const db = req.app.get('db')
         const { project_title, deadline } = req.body
         const { id } = req.session.user
-        const date = new Date
         if (id) {
-            const [newProject] = await db.projects.create_project([project_title, deadline, id, date])
+            const [newProject] = await db.projects.create_project([project_title, deadline, id])
             res.status(200).send(newProject)
         } else {
             res.status(403).send('You must Be logged in')
@@ -57,7 +56,8 @@ module.exports = {
 
     addUsersToProject: async (req, res) => {
         const db = req.app.get('db')
-        const { users_id, project_id, project_creator_id } = req.body
+        const { project_id } = req.params
+        const { users_id, project_creator_id } = req.body
         const { id } = req.session.user
         if (id !== project_creator_id) {
             return res.status(403).send('You must be the project creator to add users to a project.')
@@ -71,16 +71,11 @@ module.exports = {
         const db = req.app.get('db')
         const { users_id, project_id, project_creator_id } = req.params
         const { id } = req.session.user
-        console.log(req.params)
-
         if (id !== +project_creator_id) {
-            console.log('hit')
             res.status(403).send('You must be the project creator to remove users from a project.')
         } else {
-            console.log('hit2')
             const [teamProjects] = await db.projects.remove_user_from_project([users_id, project_id])
             res.status(200).send(teamProjects)
-            console.log(teamProjects)
         }
     },
 

@@ -8,9 +8,6 @@ class Waveform extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentTrack: 'https://colab-user-song-version.s3-us-west-1.amazonaws.com/b498abb2-6eca-4eac-88e6-89e52f8db9f3-Moment-(Acoustic-Version).mp3',
-            play: false,
-            currentTime: 0,
             volume: .8
         }
     }
@@ -24,7 +21,6 @@ class Waveform extends Component {
             progressColor: '#d7263d',
             hideScrollbar: true,
             cursorColor: '#c6c6c6',
-            interact: true,
             cursorWidth: 1,
             scrollParent: true,
             height: 200,
@@ -44,19 +40,17 @@ class Waveform extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        this.wavesurfer.stop()
         if (prevProps.match.params.song_id !== this.props.match.params.song_id) {
-            this.wavesurfer.load(this.state.currentTrack)
-
-            this.setState({
-                play: false
-            })
+            this.wavesurfer.load(this.props.version)
         }
-        if (prevProps.version != this.props.version) {
-            this.wavesurfer.load(this.props.version ? this.props.version : this.state.currentTrack)
+        if (prevProps.version !== this.props.version) {
+            this.wavesurfer.load(this.props.version)
         }
     }
 
     componentWillUnmount() {
+        this.wavesurfer.stop()
         this.wavesurfer.destroy()
     }
 
@@ -65,19 +59,6 @@ class Waveform extends Component {
     }
     pause = () => {
         this.wavesurfer.pause()
-    }
-    changeSong = (val) => {
-        this.setState({
-            currentTrack: val,
-            play: false
-        })
-        this.wavesurfer.load(val)
-    }
-
-    scrub = () => {
-        this.wavesurfer.on('interaction', function () {
-            this.wavesurfer.play()
-        })
     }
 
     forward = () => {

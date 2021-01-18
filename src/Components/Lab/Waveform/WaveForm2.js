@@ -7,51 +7,8 @@ import './waveform.css'
 function Waveform(props) {
     const [wave, setWave] = useState(undefined)
     useEffect(() => {
-        setWave(WaveSurfer.create({
-            container: '#waveDisplay',
-            audioCenterImmediately: true,
-            barWidth: 4,
-            barRadius: 3,
-            waveColor: '#ff9505',
-            progressColor: '#d7263d',
-            hideScrollbar: true,
-            cursorColor: '#c6c6c6',
-            cursorWidth: 1,
-            scrollParent: true,
-            height: 200,
-            normalize: true,
-            plugins: [TimelinePlugin.create({
-                container: '#wave-timeline',
-                notchPercentHeight: 180,
-                height: 30,
-                secondaryColor: 'orange',
-                timeInterval: 2,
-                primaryLabelInterval: 1,
-            })]
-        }))
     }, [])
 
-
-    function play() {
-        wave.play()
-    }
-
-    function pause() {
-        wave.pause()
-    }
-
-    function forward() {
-        wave.skipForward(10)
-        wave.play()
-    }
-    function back() {
-        wave.skipBackward(10)
-        wave.play()
-    }
-
-    function volume(val) {
-        wave.setVolume(val)
-    }
     return (
         <div className='audio-control-container' >
             <div className='song-info-header'>
@@ -60,11 +17,11 @@ function Waveform(props) {
                     <h2 className='song-artist'>{props.artist}</h2>
                 </div>
             </div>
-            <div id='waveDisplay'>
-                <p className='version-title'>Version Title</p>
+            <div id='waveDisplay-2'>
+                <h1>Please upload a new track file...</h1>
             </div>
-            <div id='wave-timeline' />
-            <footer className='audio-footer'>
+            {/* <div id='wave-timeline' /> */}
+            {/* <footer className='audio-footer'>
                 <div className='controls-container'>
                     <div className='time-controllers'>
                         <img onClick={() => back()} className='back-button' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/forward.png' alt='skip-back' />
@@ -77,7 +34,7 @@ function Waveform(props) {
                         <input className='volume' onChange={(e) => volume(e.target.value)} value={{}} id="volume" type="range" min="0" max="1" step="0.01" />
                     </div>
                 </div>
-            </footer>
+            </footer> */}
         </div >
     )
 }

@@ -27,10 +27,9 @@ class Profile extends Component {
                 <Header />
                 <div className='nav-container'>
                     <div className='nav-list'>
-                        {/* <h1 className='nav-item'><NavLink activeClassName='is-active' exact={true} to='/user/profile'>Overview</NavLink></h1> */}
-                        <h1 className='nav-item'><NavLink style={{ textDecoration: 'none' }} activeClassName='is-active' exact={true} to='/user/profile'> My Projects</NavLink></h1>
-                        <h1 className='nav-item'><NavLink style={{ textDecoration: 'none' }} activeClassName='is-active' exact={true} to='/user/profile/teamProjects'> Team Projects</NavLink></h1>
-                        <h1 className='nav-item'><NavLink style={{ textDecoration: 'none' }} activeClassName='is-active' exact={true} to='/user/profile/newProject'>New Project</NavLink></h1>
+                        <NavLink className='nav-item' style={{ textDecoration: 'none' }} activeClassName='is-active' exact={true} to='/user/profile'> My Projects</NavLink>
+                        <NavLink className='nav-item' style={{ textDecoration: 'none' }} activeClassName='is-active' exact={true} to='/user/profile/teamProjects'> Team Projects</NavLink>
+                        <NavLink className='nav-item' style={{ textDecoration: 'none' }} activeClassName='is-active' exact={true} to='/user/profile/newProject'>New Project</NavLink>
                     </div>
                 </div>
                 <div className='profile-view'>
@@ -42,10 +41,11 @@ class Profile extends Component {
                         <Route exact path='/user/profile/teamProjects' component={Projects} />
                         <Route exact path='/user/profile/newProject' component={NewProject} />
                         <Route exact path='/user/profile/edit' component={EditProfile} />
-                        <Route exact path='/user/profile/viewProject/:id/:project_title' component={Project} />
+                        <Route exact path='/user/profile/viewProject/:projectId/:project_title' component={Project} />
                         <Route exact path='/user/profile' component={MyProjects} />
                     </Switch>
                 </div>
+                <div className='profile-bottom-line'></div>
             </div>
         )
 

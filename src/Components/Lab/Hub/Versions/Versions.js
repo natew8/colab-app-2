@@ -25,7 +25,6 @@ function Versions(props) {
 
     function setWave(url) {
         props.setVersion(url)
-
     }
 
 
@@ -70,8 +69,7 @@ function Versions(props) {
         axios.put(signedRequest, file, options).then(res => {
             axios.post(`/api/project/song/addVersion/${props.match.params.song_id}`, { title, url }).then(ver => {
                 console.log(ver.data)
-                setWave(ver.data.audio_file)
-                setVersions([...versions, res.data])
+                setVersions([...versions, ver.data])
                 setNewUpload(false)
                 setTitle('')
                 setIsUploading(false)
@@ -91,7 +89,7 @@ function Versions(props) {
         return (
             <div onClick={() => setWave(ver.audio_file)} key={index} color={alternatingBackground[index % 2 ? alternatingBackground[0] : alternatingBackground[1]]} className='version-container'>
                 <img src='https://colab-image-assets.s3-us-west-1.amazonaws.com/2470574-200.png' alt='wave' className='waveform-icon' />
-                <h4>{ver.version_title}</h4>
+                <h4 className='version-list-title'>{ver.version_title}</h4>
             </div>
         )
     })
@@ -123,16 +121,16 @@ function Versions(props) {
                                             accept='audio/*'
                                             capture='file' />
                                     </label>
-                                    <img src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabAlogo.png' alt='logo' className='upload-logo' />
                                 </>
                                 :
                                 null
                             }
+                            <img src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabAlogo.png' alt='logo' className='upload-logo' />
                         </>
                     }
                 </div>
                 :
-                <div className='version-loading-container'>
+                <div className='version-list-container'>
                     <React.Fragment>
                         {mappedVersions}
                     </React.Fragment>

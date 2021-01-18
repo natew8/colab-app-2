@@ -35,7 +35,7 @@ function MyProjects() {
     return (
         <div className='projects-container'>
             <div className='team-projects-header'>
-                <h1 className='team-projects-title'>Team Projects</h1>
+                <h1 className='team-projects-title'>My Projects</h1>
                 <div className='team-project-line'></div>
             </div>
             {loading ?

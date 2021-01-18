@@ -47,67 +47,69 @@ function Register(props) {
 
 
     return (
-        <motion.div
-            initial={{ x: '100vw' }}
-            animate={{ x: 0 }}
-            transition={{ type: 'tween', duration: .75 }}
-            className='login-view' >
+        <div className='login-view' >
+            {loading ? <h1 className='logging-in'>Creating your profile. <br></br> Welcome to Colab!</h1>
+                :
+                <motion.div
+                    initial={{ x: '100vw' }}
+                    animate={{ x: 0 }}
+                    transition={{ type: 'tween', duration: .75, ease: 'easeInOut' }}
+                    exit={{ x: '-100vw' }}
+                    className='register-container'>
+                    <p className='back-arrow'>
+                        <Link style={{ textDecoration: 'none' }} to='/'>&larr;</Link>
+                    </p>
+                    <img className='login-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabLogoAllBlack.png' alt='Logo' />
+                    <h1 className='welcome-message'>Welcome!</h1>
 
-            {loading ? <h1 className='logging-in'>Creating your profile. <br></br> Welcome to Colab!</h1> : <div className='register-container'>
-                <p className='back-arrow'>
-                    <Link style={{ textDecoration: 'none' }} to='/'>&larr;</Link>
-                </p>
-                <img className='login-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabLogoAllBlack.png' alt='Logo' />
-                <h1 className='welcome-message'>Welcome!</h1>
-
-                <form className='auth-reg-log-form'>
-                    <input
-                        className={emptyError ? 'input-error' : 'input-field'}
-                        type='text'
-                        placeholder='email' value={email}
-                        onChange={(e) => handleEmail(e.target.value)} />
-                    {emptyError && <h6 className='required-field'>*</h6>}
-                    <input
-                        className='input-field'
-                        type='text'
-                        placeholder='role'
-                        value={role}
-                        onChange={(e) => handleRole(e.target.value)} />
-                    <input
-                        className={emptyError ? 'input-error' : 'input-field'}
-                        type='text'
-                        placeholder='username'
-                        value={username}
-                        onChange={(e) => handleUsername(e.target.value)} />
-                    {emptyError && <label className='required-field'>*</label>}
-                    <input
-                        className={emptyError || passError ? 'input-error' : 'input-field'}
-                        type='password'
-                        placeholder='password'
-                        value={password}
-                        onChange={e => handlePassword(e.target.value)} />
-                    {emptyError && <h6 className='required-field'>*</h6>}
-                    {passError && <h6 className='required-field'>*</h6>}
-                    <input
-                        className={emptyError || passError ? 'input-error' : 'input-field'}
-                        type='password'
-                        placeholder='confirm password'
-                        value={confirmPass}
-                        onChange={e => handleConfirmPass(e.target.value)} />
-                    {emptyError && <h6 className='required-field'>*</h6>}
-                    {passError && <h6 className='required-field'>*</h6>}
-                    {emptyError && <p className='error-message'>{emptyError}</p>}
-                    {passError && <p className='error-message'>{passError}</p>}
-                    {error && <p className='error-message'>{error}</p>}
-                    <button onClick={() => userRegister()}>signup</button>
-                </form>
-                <h5 className='link-to-login'>
-                    <Link className='link-to-login' style={{ textDecoration: 'none' }} to='/login'>
-                        Already a member? Sign In!
+                    <form className='auth-reg-log-form'>
+                        <input
+                            className={emptyError ? 'input-error' : 'input-field'}
+                            type='text'
+                            placeholder='email' value={email}
+                            onChange={(e) => handleEmail(e.target.value)} />
+                        {emptyError && <h6 className='required-field'>*</h6>}
+                        <input
+                            className='input-field'
+                            type='text'
+                            placeholder='role'
+                            value={role}
+                            onChange={(e) => handleRole(e.target.value)} />
+                        <input
+                            className={emptyError ? 'input-error' : 'input-field'}
+                            type='text'
+                            placeholder='username'
+                            value={username}
+                            onChange={(e) => handleUsername(e.target.value)} />
+                        {emptyError && <label className='required-field'>*</label>}
+                        <input
+                            className={emptyError || passError ? 'input-error' : 'input-field'}
+                            type='password'
+                            placeholder='password'
+                            value={password}
+                            onChange={e => handlePassword(e.target.value)} />
+                        {emptyError && <h6 className='required-field'>*</h6>}
+                        {passError && <h6 className='required-field'>*</h6>}
+                        <input
+                            className={emptyError || passError ? 'input-error' : 'input-field'}
+                            type='password'
+                            placeholder='confirm password'
+                            value={confirmPass}
+                            onChange={e => handleConfirmPass(e.target.value)} />
+                        {emptyError && <h6 className='required-field'>*</h6>}
+                        {passError && <h6 className='required-field'>*</h6>}
+                        {emptyError && <p className='error-message'>{emptyError}</p>}
+                        {passError && <p className='error-message'>{passError}</p>}
+                        {error && <p className='error-message'>{error}</p>}
+                        <button onClick={() => userRegister()}>signup</button>
+                    </form>
+                    <h5 className='link-to-login'>
+                        <Link className='link-to-login' style={{ textDecoration: 'none' }} to='/login'>
+                            Already a member? Sign In!
                          </Link>
-                </h5>
-            </div>}
-        </motion.div >
+                    </h5>
+                </motion.div>}
+        </div >
     )
 }
 

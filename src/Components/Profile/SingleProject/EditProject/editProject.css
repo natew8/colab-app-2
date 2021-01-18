@@ -42,6 +42,7 @@
     width: 99.9%;
     border-radius: 3px;
     margin-top: .6rem;
+    margin-bottom: .6rem;
 }
 .project-info-box>h1{
     text-align: left;
@@ -75,4 +76,44 @@ h2>h2{
     margin-top: .6rem;
     margin-bottom: .6rem;
     height: fill;
+}
+.edit-song-window{
+    border: 2px solid #c6c6c6;
+    border-radius: 3px;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+    max-height: 30rem;
+    /* overflow: hidden; */
+}
+.edit-team-window{
+    border: 2px solid #c6c6c6;
+    border-radius: 3px;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+    height: fill;
+}
+
+
+.song-list-title{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2rem;
+    color: #071013;
+}
+
+.edit-project-footer{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    bottom: 0px;
+    background-color: #f4f6f6;
+    border-top: 2px solid #071013;
+    z-index: 8000;
+}
+.edit-project-footer>h4{
+    margin-left: 10px;
+}
+.edit-project-footer>h4:hover{
+    color: #ff9505;
+    cursor: pointer;
 }

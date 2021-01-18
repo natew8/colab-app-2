@@ -1,0 +1,25 @@
+.delete-container{
+    height: 24.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h3>h1{
+    margin: 0px;
+}
+
+.confirm-button{
+    background-color: #c6c6c6;
+    width: 5rem;
+    margin-right: .6rem;
+}
+.confirm-button:hover{
+    background-color: #d7263d;
+    width: 5rem;
+    margin-right: .6rem;
+}
+.cancel-button{
+    width: 5rem;
+    margin-right: .6rem;
+}

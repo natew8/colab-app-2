@@ -154,3 +154,7 @@ font-weight: 500;
     width: 4.5rem;
     outline: none;
 }
+
+.new-song-loading{
+    margin-top: 13rem;
+}

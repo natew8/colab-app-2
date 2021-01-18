@@ -18,6 +18,12 @@ function TeamEdit(props) {
         })
     }, [team])
 
+    useEffect(() => {
+        axios.get(`/api/project/team/${project_id}`).then(res => {
+            setTeam(res.data)
+        })
+    }, [])
+
     function addUser(users_id) {
         axios.post(`/api/project/invite/${project_id}`, { users_id, project_creator_id }).then(res => {
             setTeam([...team, res.data])
@@ -27,13 +33,15 @@ function TeamEdit(props) {
 
     function removeUser(users_id) {
         console.log(users_id)
-        axios.delete(`/api/project/remove/${users_id}/${project_id}/${project_creator_id}}`).then(res => {
+        axios.delete(`/api/project/remove/${users_id}/${project_id}/${project_creator_id}`).then(res => {
             const newArr = [...team]
             const targetI = newArr.findIndex((userObj) => {
                 return userObj.id === users_id
             })
             newArr.splice(targetI, 1)
             setTeam(newArr)
+        }).catch(err => {
+            console.log(err.response.data)
         })
     }
 

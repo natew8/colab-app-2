@@ -35,7 +35,7 @@ function Comments(props) {
         axios.get(`/api/project/song/conversation/comments/${props.convoId}`).then(com => {
             setComments(com.data)
         })
-    }, [props.convoId, props.song_id])
+    }, [props.convoId, props.song_id], comment)
 
     function postComment() {
         axios.post(`/api/project/song/conversation/newComment/${props.convoId}`, { comment }).then(newCom => {
@@ -53,7 +53,7 @@ function Comments(props) {
                 <div className='content-box'>
                     <div className='info-box'>
                         <h4 className='comment-user-info'>{comment.username}</h4>
-                        <h4 className='comment-user-info-date'>{moment(comment.date_created).format('L')}</h4>
+                        <h4 className='comment-user-info-date'>{moment(comment.date_created).fromNow()}</h4>
                     </div>
                     <p className='body-body'>{comment.comment}</p>
                 </div>

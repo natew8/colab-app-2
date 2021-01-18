@@ -2,8 +2,14 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './landing.css'
-
 const containerVariants = {
+    exit: {
+        x: '-100vw',
+        transition: { ease: 'easeInOut' }
+    }
+}
+
+const logoVariants = {
     initial: {
         opacity: 0,
         y: 70
@@ -45,13 +51,14 @@ const h2Variant = {
     }
 }
 
+
 function Landing() {
     return (
-        <div className='landing'>
-            <div className='welcome-banner'>
+        <div variants={containerVariants} exit='exit' className='landing'>
+            <motion.div variants={containerVariants} exit='exit' className='welcome-banner'>
                 <div className='welcome-banner'>
                     <motion.img
-                        variants={containerVariants}
+                        variants={logoVariants}
                         initial='initial'
                         animate='visible'
                         className='colab-logo'
@@ -83,7 +90,7 @@ function Landing() {
                     <Link to='/login'><motion.button initial={{ opacity: 0 }} animate={{ scale: 1.2, opacity: 1 }} transition={{ delay: 3.5, duration: .5 }} className='login-button'>Login</motion.button></Link>
                     <motion.img initial={{ height: '0rem' }} animate={{ height: 400 }} transition={{ delay: 3.5, duration: .5, type: 'tween' }} className='landing-background' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Colab+Background+1.png' alt='background' />
                 </div>
-            </div>
+            </motion.div>
         </div >
     )
 }

@@ -1,0 +1,56 @@
+.edit-mapped-songList{
+    margin: 0px;
+    height: 30rem;
+    overflow-y: scroll;
+}
+.edit-mapped-songList::-webkit-scrollbar{
+    display: none;
+}
+.edit-title-artist-container{
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    width: 15rem;
+}
+.edit-song-container{
+    text-align: left;
+    margin: 5px 7px 5px;
+    padding: 7px 7px;
+    height: 3.5rem;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid #cfcfcf;
+    z-index: 2;
+}
+
+.edit-song-container>h3{
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: Nunito;
+    width: 9rem;
+}
+.edit-song-container>h3>h2{
+    font-size: 1rem;
+    margin: 0px;
+    color: #071013;
+    margin-left: 5px;
+    text-transform: none;
+    font-family: Roboto condensed;
+    font-weight: 800;
+}
+
+.delete-song-icon{
+    width: 20px;
+}
+.delete-song-icon:hover{
+    filter: invert(29%) sepia(93%) saturate(6016%) hue-rotate(342deg) brightness(90%) contrast(86%);
+    width: 20px;
+    cursor: pointer;
+}

@@ -37,19 +37,18 @@ function Login(props) {
 
 
     return (
-        <motion.div
-            initial={{ x: '100vw' }}
-            animate={{ x: 0 }}
-            transition={{ type: 'tween', duration: .75 }}
-            className='login-view' >
-
+        <div className='login-view'>
             {loading ?
                 <div>
                     <h1 className='logging-in'>Retrieving your profile...</h1>
                     <img className='loading-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabAlogo.png' alt='logo' />
                 </div>
                 :
-                <div className='login-container'>
+                <motion.div
+                    initial={{ x: '100vw' }}
+                    animate={{ x: 0 }}
+                    transition={{ type: 'tween', duration: .75 }}
+                    className='login-container'>
                     <p className='back-arrow'>
                         <Link style={{ textDecoration: 'none' }} to='/'> &larr;</Link>
                     </p>
@@ -69,8 +68,8 @@ function Login(props) {
                             Not a member yet? Sign Up!
                     </Link>
                     </h4>
-                </div>}
-        </motion.div >
+                </motion.div>}
+        </div >
     )
 }
 

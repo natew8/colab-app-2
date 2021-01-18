@@ -1,9 +1,15 @@
+.user-info-box{
+    display: flex;
+}
+
+
+
+
 .info-container{
-    position: absolute;
     padding: 15px;
-    /* border: 1px solid #f6f6f688; */
     border-radius: 3px;
     width: 12.55rem;
+    height: fit-content;
 }
 .profile-pic{
     border-radius: 100% 100%;
@@ -18,14 +24,21 @@
 
 .date{
     text-align: left;
-    margin-bottom: -3px;
+    margin: 0px;
+    margin: .6rem 0px;
 }
 .icon-text-container{
+    height: fit-content;
+    padding: 0px;
     max-width: 500px;
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    margin-bottom: -5px;
+    margin-bottom: .5rem;
+}
+
+.icon-text-container>h2{
+    margin: 0px;
 }
 
 .icon{
@@ -48,4 +61,14 @@
 }
 .username-info{
     text-transform: none;
+}
+
+#user-info-new-project-button{
+    margin: 0;
+    margin-top: .6rem;
+    width: fit-content;
+    height: fit-content;
+    background-color: #ff9505;
+    border: 1px solid #071013;
+    text-transform: lowercase;
 }

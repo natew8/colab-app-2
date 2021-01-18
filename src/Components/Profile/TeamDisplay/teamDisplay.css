@@ -1,12 +1,11 @@
 .container-team{
-    position: absolute;
     padding: 0px 7px 7px;
     border: 1px solid #f6f6f688;
     border-radius: 3px;
-    top: 25.2rem;
     background-color: #f4f6f6;
     box-shadow: 2px 5px 7px #071013;
-    max-height: 24.2rem;
+    height: 24.1rem;
+    max-height: 24.1rem;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -35,6 +34,7 @@
 .user-info-line-team{
     border: 1px solid #071013;
     margin-top: 5px;
+    margin-bottom: .6rem;
 }
 .team-list-item{
     margin-bottom: 10px;

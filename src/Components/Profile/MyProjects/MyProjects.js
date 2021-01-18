@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import moment from 'moment'
 import './myProjects.css'
 
@@ -26,7 +27,7 @@ function MyProjects() {
             <Link key={element.id} style={{ textDecoration: 'none' }} to={`/user/profile/viewProject/${element.id}/${element.project_title}`}>
                 <div className='project-container'>
                     <h2 className='project-title'>{element.project_title}</h2>
-                    <h4 id='my-project-date'>Deadline: {moment(element.deadline).format('L')}</h4>
+                    <h4 className='my-project-date'>Deadline:<h3>{moment(element.deadline).format('L')}</h3></h4>
                 </div >
             </Link>
         )
@@ -46,7 +47,9 @@ function MyProjects() {
                     <div className='loading-dot-3'></div>
                 </div>
                 :
-                projectsMapped
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+                    {projectsMapped}
+                </motion.div>
             }
             {loading ? null :
                 <div className='project-footer'>

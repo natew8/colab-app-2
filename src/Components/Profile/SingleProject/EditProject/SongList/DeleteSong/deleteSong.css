@@ -4,7 +4,12 @@
     flex-direction: column;
     justify-content: center;
 }
-
+.delete-container>h4{
+    color: #d7263d;
+    font-size: 1rem;
+    margin: 0;
+    margin-bottom: .6rem;
+}
 h3>h1{
     margin: 0px;
 }

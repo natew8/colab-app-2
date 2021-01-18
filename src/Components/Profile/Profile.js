@@ -33,6 +33,7 @@ class Profile extends Component {
                     </div>
                 </div>
                 <div className='profile-view'>
+                    <div id='div-line-decor'></div>
                     <div className='side-bar'>
                         <UserInfo />
                         <TeamDisplay />
@@ -44,6 +45,7 @@ class Profile extends Component {
                         <Route exact path='/user/profile/viewProject/:projectId/:project_title' component={Project} />
                         <Route exact path='/user/profile' component={MyProjects} />
                     </Switch>
+                    <div id='div-line-decor-right'></div>
                 </div>
                 <div className='profile-bottom-line'></div>
             </div>

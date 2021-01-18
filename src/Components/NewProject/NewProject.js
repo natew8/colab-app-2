@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import TeamBuild from './TeamBuild'
 import './newProject.css'
 
@@ -32,7 +33,7 @@ function NewProject(props) {
                 <h1 className='team-projects-title'>New Project</h1>
                 <div className='team-project-line'></div>
             </div>
-            <div className='inputs-container'>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='inputs-container'>
                 <div className='new-input-box'>
                     <h4 className='new-label'>
                         Project Title
@@ -45,7 +46,7 @@ function NewProject(props) {
                     </h4>
                     <input onChange={(e) => setDeadline(e.target.value)} className='new-project-input' type='date' placeholder='Title' />
                 </div>
-            </div>
+            </motion.div>
             {deadline && project_title && !next ?
                 <button onClick={() => createProject()} className='next-button'>Next</button>
                 : null}

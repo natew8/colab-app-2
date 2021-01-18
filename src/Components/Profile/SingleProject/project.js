@@ -27,7 +27,7 @@ function Project(props) {
                 setSongs(res.data)
             })
         })
-    }, [props.match.params.id, newSong])
+    }, [props.match.params.id, newSong, editProject])
 
     function goBack() {
         props.history.goBack()
@@ -53,7 +53,7 @@ function Project(props) {
     return (
         <>
             {editProject ?
-                <EditProject setEditProject={setEditProject} />
+                <EditProject newSong={newSong} setNewSong={setNewSong} setEditProject={setEditProject} />
                 :
                 <div className='projects-container'>
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} id='header'>
@@ -71,7 +71,7 @@ function Project(props) {
                             {/* <h2 className='details-header-item'>Created On: 04/28/2020 </h2> */}
                         </div>
                     </motion.div>
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .5, duration: 1 }} >
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .5, duration: 1 }} className='new-mapped-song-container' >
                         {newSong ?
                             <NewSong creatorId={creatorId} newSong={setNewSong} />
                             :

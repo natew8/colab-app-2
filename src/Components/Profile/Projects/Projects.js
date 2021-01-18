@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import moment from 'moment'
 import './projects.css'
 
@@ -43,7 +44,10 @@ function Projects() {
                     <div className='loading-dot-2'></div>
                     <div className='loading-dot-3'></div>
                 </div> :
-                projectsMapped}
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+                    {projectsMapped}
+                </motion.div>
+            }
         </div>
     )
 }

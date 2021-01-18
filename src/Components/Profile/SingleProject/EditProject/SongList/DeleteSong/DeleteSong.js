@@ -1,20 +1,28 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import axios from 'axios'
 import './deleteSong.css'
 
 function DeleteSong(props) {
+    const song_id = props.id
 
     function confirmRemove() {
-
+        axios.delete(`/api/project/song/delete/${song_id}`).then(res => {
+            console.log(res)
+            props.setDeleteSong(false)
+        }).catch(err => {
+            console.log(err.response.data)
+        })
     }
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='delete-container'>
-            <h3>Are You Sure Want to delete<h1>{props.title}</h1> from your project?</h3>
-            <h3>This will delete all song data and associated files.</h3>
+            <h3>Are You Sure Want to delete the song<h1>{props.title}</h1> from your project?</h3>
+            <h4>This will delete all song data including: conversations, comments, and associated song files.</h4>
+            <h4>This cannot be undone</h4>
             <div>
-                <button className='confirm-button'>Delete</button>
+                <button onClick={() => confirmRemove()} className='confirm-button'>Delete</button>
                 <button onClick={() => props.setDeleteSong(false)} className='cancel-button'>Cancel</button>
             </div>
         </motion.div>

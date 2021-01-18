@@ -75,7 +75,7 @@ h2>h2{
     border-radius: 3px;
     margin-top: .6rem;
     margin-bottom: .6rem;
-    height: fill;
+    height: stretch;
 }
 .edit-song-window{
     border: 2px solid #c6c6c6;
@@ -90,7 +90,7 @@ h2>h2{
     border-radius: 3px;
     margin-top: .6rem;
     margin-bottom: .6rem;
-    height: fill;
+    height: stretch;
 }
 
 
@@ -107,7 +107,7 @@ h2>h2{
     position: sticky;
     bottom: 0px;
     background-color: #f4f6f6;
-    border-top: 2px solid #071013;
+    border-top: 1px solid #c6c6c6;
     z-index: 8000;
 }
 .edit-project-footer>h4{

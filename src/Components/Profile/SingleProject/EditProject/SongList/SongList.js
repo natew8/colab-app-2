@@ -10,6 +10,7 @@ function SongList(props) {
     const [songList, setSongList] = useState([])
     const [deleteSong, setDeleteSong] = useState(false)
     const [songName, setSongName] = useState('')
+    const [songId, setSongId] = useState(0)
     let project_id = props.match.params.projectId
     useEffect(() => {
         axios.get(`/api/project/songList/${project_id}`).then(res => {
@@ -20,12 +21,13 @@ function SongList(props) {
     }, [])
     function removeSong(title) {
         setSongName(title.song_title)
+        setSongId(title.id)
         setDeleteSong(!deleteSong)
     }
 
     const mappedSongList = songList.map(song => {
         return (
-            <div className='edit-song-container'>
+            <div key={song.id} className='edit-song-container'>
                 <div className='edit-title-artist-container'>
                     <h2 className='project-title'>{song.song_title}</h2>
                     <h2 className='artist-name'>{song.artist_name}</h2>
@@ -42,7 +44,7 @@ function SongList(props) {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='edit-mapped-songList'>
             {deleteSong ?
-                <DeleteSong setDeleteSong={setDeleteSong} title={songName} />
+                <DeleteSong setDeleteSong={setDeleteSong} id={songId} title={songName} />
                 :
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                     {mappedSongList}

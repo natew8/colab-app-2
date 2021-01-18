@@ -19,12 +19,27 @@
     margin-right: auto;
     border-radius: 3px;
 }
+#div-line-decor{
+    position: absolute;
+    left:0;
+    top: 2.4rem;
+    bottom: 0px;
+    border-left:2.9px solid #c6c6c670 ;
+}
+#div-line-decor-right{
+    position: absolute;
+    right:0;
+    top: 2.4rem;
+    bottom: 0px;
+    border-left:2.9px solid #c6c6c670 ;
+}
+
 .nav-container{
     position: absolute;
     width: 100vw;
     height: fit-content;
     margin-top: 40px;
-    border-bottom: 2.9px solid #c6c6c6;
+    border-bottom: 2.9px solid #c6c6c670;
     box-sizing: border-box;
     padding: 0px;
 }

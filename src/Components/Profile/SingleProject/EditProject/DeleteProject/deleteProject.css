@@ -1,0 +1,9 @@
+.delete-project-box{
+    margin-top: 1rem;
+}
+
+.delete-project-box>h2{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #d7263d;
+}

@@ -4,7 +4,16 @@
     margin-left: auto;
     border-radius: 3px;
 }
+.my-project-date{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-family: nunito;
+}
+h4>h3{
+    margin-left: 5px;
 
+}
 .add-project-button{
     width: 9rem;
     height: 2rem; 
@@ -17,6 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 .loading-dot-1{
     background-color: #ff9505;

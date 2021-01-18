@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { updateUser } from '../../../dux/userReducer'
 import { ScaleLoader } from 'react-spinners'
 import { v4 as randomString } from 'uuid'
+import { motion } from 'framer-motion'
 import './editProfile.css'
 
 function EditProfile(props) {
@@ -105,7 +106,7 @@ function EditProfile(props) {
                     <div className='loading-dot-3'></div>
                 </div>
                 :
-                <>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                     {isUploading ?
                         <div className='progress-box'>
                             <ScaleLoader id='edit-profile-circle' />
@@ -172,7 +173,7 @@ function EditProfile(props) {
                     </button>
                             : null}
                     </form>
-                </>
+                </motion.div>
             }
         </div >
     )

@@ -286,6 +286,9 @@
         position: relative;
         padding: 0px;
     }
+    .ipad-logo{
+        display: inline;
+    }
     .profile-view{
         position: relative;
         max-width: 770px;

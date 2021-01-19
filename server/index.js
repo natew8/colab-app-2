@@ -10,9 +10,10 @@ const convCtrl = require('./controllers/conversations')
 const awsCtrl = require('./controllers/aws')
 const awsPicCtrl = require('./controllers/awsPic')
 
-
 const app = express()
 app.use(express.json())
+
+app.use(express.static(`${__dirname}/../build`))
 
 
 app.use(session({

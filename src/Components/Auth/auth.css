@@ -170,16 +170,17 @@ h1{
 @media(max-width: 430px){
     .login-view{
         background: none;
+        height: 100vh;
     }
     .register-container{
         margin-top: 0px;
         border: none;
-        height: 100%;
+        /* height: 100%; */
     }
     .login-container{
         margin-top: 0px;
         border: none;
-        height: 100%;
+        /* height: 100%; */
     }
     .login-logo{
         /* margin-top: 1rem; */

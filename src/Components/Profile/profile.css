@@ -6,6 +6,7 @@
 }
 
 .ipad-logo{
+    display: none;
     width: 5rem;
     top: 0px;
 }

@@ -9,7 +9,7 @@ import axios from 'axios'
 
 function Register(props) {
     const [email, handleEmail] = useState('')
-    const [role, handleRole] = useState('')
+    const [role, handleRole] = useState('Role')
     const [username, handleUsername] = useState('')
     const [password, handlePassword] = useState('')
     const [confirmPass, handleConfirmPass] = useState('')
@@ -61,7 +61,11 @@ function Register(props) {
                     </p>
                     <img className='login-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/ColabLogoAllBlack.png' alt='Logo' />
                     <h1 className='welcome-message'>Welcome!</h1>
-
+                    <h5 className='link-to-login-top'>
+                        <Link className='link-to-login-top' style={{ textDecoration: 'none' }} to='/login'>
+                            Already a member? Sign In!
+                         </Link>
+                    </h5>
                     <form className='auth-reg-log-form'>
                         <input
                             className={emptyError ? 'input-error' : 'input-field'}
@@ -69,12 +73,6 @@ function Register(props) {
                             placeholder='email' value={email}
                             onChange={(e) => handleEmail(e.target.value)} />
                         {emptyError && <h6 className='required-field'>*</h6>}
-                        <input
-                            className='input-field'
-                            type='text'
-                            placeholder='role'
-                            value={role}
-                            onChange={(e) => handleRole(e.target.value)} />
                         <input
                             className={emptyError ? 'input-error' : 'input-field'}
                             type='text'
@@ -98,6 +96,16 @@ function Register(props) {
                             onChange={e => handleConfirmPass(e.target.value)} />
                         {emptyError && <h6 className='required-field'>*</h6>}
                         {passError && <h6 className='required-field'>*</h6>}
+                        <select id='select-input-field' onChange={(e) => handleRole(e.target.value)}>
+                            <option value='' disabled selected >Please Select Interest...</option>
+                            <option value='Producer'>Producer</option>
+                            <option value='Songwriter'>Songwriter</option>
+                            <option value='Producer'>Producer</option>
+                            <option value='Mixing/Mastering'>Mixing/Mastering</option>
+                            <option value='Management'>Management</option>
+                            <option value='Artist'>Artist</option>
+                            <option value='Other'>Other</option>
+                        </select>
                         {emptyError && <p className='error-message'>{emptyError}</p>}
                         {passError && <p className='error-message'>{passError}</p>}
                         {error && <p className='error-message'>{error}</p>}

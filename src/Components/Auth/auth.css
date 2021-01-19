@@ -1,32 +1,15 @@
-.link-to-login{
-    text-align: left;
-    padding: 0px;
-    padding-left: 1px;
-    margin-bottom: 0px;
-    color: blue;
-    font-weight: 200;
-    font-size: .9rem;
-}
-
-.welcome-message{
-    margin-top: 0px;
-}
-
-/*Login Styling*/
+/* Page  */
 .login-view{
     overflow-y: hidden;
     height: inherit;
     background: radial-gradient(farthest-corner, #1C6B85 10%, #071013 100%), #F4F6F6;
 }
-.logging-in{
-    margin-top: 200px;
-}
+
+/* Container  */
 .login-container{
-    position: relative;
-    top: 220px;
     background: #FFFFFF;
-    /* box-shadow: 5px 5px 0px #071013; */
     max-width: 400px;
+    margin-top: 11rem;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
@@ -35,12 +18,11 @@
     border: 3px solid #071013;
     z-index: 1000;
 }
+
 .register-container{
-    position: relative;
-    top: 165px;
     background: #FFFFFF;
-    /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25); */
     max-width: 400px;
+    margin-top: 7rem;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
@@ -49,6 +31,8 @@
     border: 3px solid #071013;
     z-index: 1000;
 }
+
+/* Contents */
 .back-arrow{
     position: absolute;
     left: 015px;
@@ -58,14 +42,13 @@
     width: 10rem;
     padding: 10px;
 }
-.background-login{
-    max-width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
 
+.welcome-message{
+    margin: 0px;
 }
+
+
+/* Form  */
 .auth-reg-log-form{
     border: 1px solid #c6c6c6;
     display: flex;
@@ -77,10 +60,28 @@
     height: 40px;
     margin-bottom: 20px;
     font-size: 1rem;
-    outline-color: #ff9505;
     border-bottom: 1.5px solid #c6c6c6;
 }
-
+#select-input-field{
+    padding: 0px;
+    font-size: 1rem;
+    text-transform: lowercase;
+    color: #808080;
+    border: none;
+    border-bottom: 1.5px solid #c6c6c6;
+    background-color: transparent;
+    margin-bottom: 20px;
+    height: 25px;
+}
+#select-input-field:focus{
+    border: none;
+    border-bottom: 1.5px solid #ff9505;
+    outline: none;
+    background-color: transparent;
+}
+.role-label{
+    font-size: .5rem;
+}
 .input-error{
     height: 40px;
     border-bottom: 2px solid #d7263d;
@@ -97,6 +98,8 @@
 }
 
 .error-message{
+    text-align: left;
+    margin: 0px;
     color: #d7263d;
 }
 button{
@@ -110,7 +113,32 @@ button:hover{
     background-color: #e98902;
 }
 h1{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.link-to-login{
+    text-align: left;
+    padding: 0px;
+    padding-left: 1px;
+    margin-bottom: 0px;
+    color: blue;
+    font-weight: 200;
+    font-size: .9rem;
+}
+.link-to-login-top{
+    display: none;
+    margin: 0px;
+    text-align: left;
+    padding: 0px;
+    padding-left: 1px;
+    margin-bottom: 0px;
+    color: blue;
+    font-weight: 200;
+    font-size: .9rem;
+}
+/*Loading*/
+.logging-in{
+    margin-top: 200px;
 }
 .loading-logo{
     width: 100px;
@@ -126,10 +154,46 @@ h1{
     80% { transform: rotate(-10deg); } 
     100% { transform: rotate(0deg); } 
 }
+/**/
 
-@media(max-width:995){
-    .login-container{
-        margin-top:-5px;
+
+
+@media(max-width:1025px){
+    .register-container{
+        margin-top: 4rem;
     }
+    .login-container{
+        margin-top: 4rem;
+    }
+}
 
+@media(max-width: 430px){
+    .login-view{
+        background: none;
+    }
+    .register-container{
+        margin-top: 0px;
+        border: none;
+        height: 100%;
+    }
+    .login-container{
+        margin-top: 0px;
+        border: none;
+        height: 100%;
+    }
+    .login-logo{
+        /* margin-top: 1rem; */
+    }
+    .link-to-login-top{
+        display: flex;
+    }
+    .link-to-login{
+        display: none;
+    }
+    .login-container>h1{
+        margin-bottom: 0px;
+    }
+    .register-container>H1{
+        margin-bottom: 0px;
+    }
 }

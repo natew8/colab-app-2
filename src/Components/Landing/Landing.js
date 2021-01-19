@@ -87,8 +87,15 @@ function Landing() {
                             Signup
                     </motion.button>
                     </Link>
-                    <Link to='/login'><motion.button initial={{ opacity: 0 }} animate={{ scale: 1.2, opacity: 1 }} transition={{ delay: 3.5, duration: .5 }} className='login-button'>Login</motion.button></Link>
-                    <motion.img initial={{ height: '0rem' }} animate={{ height: 400 }} transition={{ delay: 3.5, duration: .5, type: 'tween' }} className='landing-background' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Colab+Background+1.png' alt='background' />
+                    <Link to='/login'>
+                        <motion.button
+                            initial={{ opacity: 0 }}
+                            animate={{ scale: 1.2, opacity: 1 }}
+                            transition={{ delay: 3.5, duration: .5 }}
+                            className='login-button'>Login
+                    </motion.button>
+                    </Link>
+                    {/* <img className='landing-background' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Colab+Background+1.png' alt='background' /> */}
                 </div>
             </motion.div>
         </div >

@@ -2,12 +2,13 @@
     background: linear-gradient(170deg, #1C6B85 15%, #071013 91.17%), #F4F6F6;
     height: 100vh;
     width: 100vw;
-    background-position: bottom;
-    background-repeat: no-repeat;
     overflow: hidden;
 }
 
-
+.ipad-logo{
+    width: 5rem;
+    top: 0px;
+}
 .profile-view{
     position: relative;
     max-width: 1300px;
@@ -18,6 +19,37 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 3px;
+}
+.projects-container{
+    position: absolute;
+    top: 3.8rem;
+    padding: 0px .6rem;
+    right: 15px;
+    width: 1055px;
+    background-color: #f4f6f6;
+    margin-left: auto;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 3px 7px #071013;
+    height: 46rem;
+    overflow-y:scroll;
+    box-sizing: border-box;
+}
+.new-project-container{
+    position: absolute;
+    top: 3.8rem;
+    padding: 0px .6rem;
+    right: 15px;
+    width: 1055px;
+    background-color: #f4f6f6;
+    margin-left: auto;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 3px 7px #071013;
+    overflow-y:scroll;
+    box-sizing: border-box;
 }
 #div-line-decor{
     position: absolute;
@@ -80,6 +112,8 @@
 }
 .side-bar{
     position: absolute;
+    bottom: 0px;
+    top: 0px;
 }
 
 .projects-title{
@@ -102,12 +136,196 @@
 .profile-bottom-line{
     border-bottom: 1px solid #c6c6c670;
 }
-@media(max-width:750px){
+/* Burger Menu  */
+.burger-menu{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 1.5rem;
+    display: none;
+}
+.burger-menu:hover{
+    cursor: pointer;
+}
+.burger-bar{
+    border-top: 2px solid #071013;
+    margin-bottom: 3px;
+}
+.burger-menu-right{
+    display: flex;
+    flex-direction: column;
+    background-color: #071013;
+    position: fixed;
+    right: 0px;
+    height: 50vh;
+    width: 12rem;
+    top: 0px;
+    padding: .6rem;
+    z-index: 9000;
+    transition: all .5s;
+}
+.burger-menu-hidden{
+    width: 0px;
+    overflow: hidden;
+}
+.close-burger{
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    font-size: 1rem;
+}
+.close-burger:hover{
+    cursor: pointer;
+}
+.burger-user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+}
+.burger-user-info>h4{
+    color: #ff9505;
+    margin: 0px;
+}
+.burger-user-info>h6{
+    margin: 0px;
+}
+.burger-profile-pic{
+    width: 25px;
+    border-radius: 50%;
+}
+.burger-info-line{
+    border-bottom: 2px solid #c6c6c6;
+    margin: 5px 0px;
+}
+
+.burger-user-nav>h6{
+    color: #c6c6c6;
+    margin: 0px;
+    text-align: left;
+}
+.burger-user-nav>.icon-text-container{
+    margin: .6rem 0px;
+}
+.burger-nav-item{
+    font-family: Nunito;
+    text-align: left;
+    height: 1.25em;
+    font-size: 1rem;
+    color: #c6c6cc;
+    box-sizing: border-box;
+    margin-bottom: .6rem;
+}
+.burger-nav-item:hover{
+    border-bottom: 1px solid #ff9505;
+    cursor: pointer;
+    color: #ff9505;
+}
+
+.burger-is-active{
+    font-size: 1rem;
+    color: #ff9505;
+}
+
+@media(max-width:1340px){
+    .profile-view{
+        max-width: 1200px;
+    }
+    .projects-container{
+        width: 955px;
+    }
+    .new-project-container{
+        width: 955px;
+    }
+}
+@media(max-width:1235px){
+    .profile-view{
+        max-width: 1100px;
+    }
+    .projects-container{
+        max-width: 855px;
+    }
+    .new-project-container{
+        max-width: 855px;
+    }
+    .nav-list{
+        margin-left: 21rem;
+    }
+
+}
+
+@media(max-width:1137px){
+    .profile-view{
+        width: 1000px;
+    }
+    .projects-container{
+        max-width: 755px;
+    }
+    .new-project-container{
+        max-width: 755px;
+    }
+}
+
+@media(max-width:1025px){
+    .profile-view{
+        max-width: 950px;
+    }
+    .projects-container{
+        max-width: 705px;
+    }
+    .new-project-container{
+        max-width: 705px;
+    }
+    .nav-list{
+        margin-left: 20rem;
+    }
+}
+@media(max-width:770px){
     .profile{
-        background:linear-gradient(170deg, #1C6B85 15%, #071013 91.17%), #F4F6F6;
+        position: relative;
+        padding: 0px;
+    }
+    .profile-view{
+        position: relative;
+        max-width: 770px;
+        padding: 0px;
+        margin: 0px;
         height: 100vh;
         width: 100vw;
-        background-position: bottom;
-        background-repeat: no-repeat;
+    }
+    .projects-container{
+        position: relative;
+        top: 10px;
+        max-width: 739px;
+    }
+    .new-project-container{
+        position: relative;
+        top: 10px;
+        max-width: 739px;
+    }
+
+    .side-bar{
+        display: none;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+    }
+    .nav-list{
+        display: none;
+        margin: 0px;
+    }
+    .nav-container{
+        display: none;
+        margin: 0px;
+    }
+    #div-line-decor{
+        display: none;
+    }
+    #div-line-decor-right{
+        display: none;
+    }
+    .burger-menu{
+        display: flex;
+        flex-direction: column;
     }
 }

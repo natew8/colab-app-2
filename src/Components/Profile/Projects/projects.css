@@ -1,19 +1,4 @@
-.projects-container{
-    position: absolute;
-    top: 3.8rem;
-    padding: 0px .6rem;
-    right: 15px;
-    width: 1055px;
-    background-color: #f4f6f6;
-    margin-left: auto;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 2px 3px 7px #071013;
-    height: 46rem;
-    overflow-y:scroll;
-    box-sizing: border-box;
-}
+
 
 .projects-container::-webkit-scrollbar{
     display: none;

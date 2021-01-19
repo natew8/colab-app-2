@@ -50,3 +50,15 @@
     font-weight: 300;
     text-transform: none;
 }
+
+@media(max-width:770px){
+    .colab-header{
+        display: none;
+    }
+    .main-header-logo{
+        height: 25px;
+    }
+    .main-header-logo-right{
+        display: none;
+    }
+}

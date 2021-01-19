@@ -139,13 +139,13 @@ h2{
     }
 
     .register-button{
-        height: fit-content;
+    height: 2.3rem;
     width: 19rem;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 
     }
     .login-button{
-        height: fit-content;
+        height: 2.3rem;
     width: 19rem;
     }
     h1{

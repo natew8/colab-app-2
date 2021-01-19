@@ -61,7 +61,7 @@ app.post('/api/project/song/conversation/newComment/:convo_id', convCtrl.writeCo
 app.get('/api/project/song/conversation/comments/:convo_id', convCtrl.getComments)
 
 
-///AWS enpoint
+///AWS endpoints
 app.get('/api/s3', awsCtrl.getS3)
 app.get('/api/s3/picture', awsPicCtrl.getS3Pic)
 

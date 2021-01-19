@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { ScaleLoader } from 'react-spinners'
+import { motion } from 'framer-motion'
 import WaveSurfer from 'wavesurfer.js'
 import TimelinePlugin from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min";
 import './waveform.css'
@@ -94,11 +95,11 @@ class Waveform extends Component {
                         <h2 className='song-artist'>{this.props.artist}</h2>
                     </div>
                 </div>
-                <div onClick={() => this.setState({ play: false })} id='waveDisplay'>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} onClick={() => this.setState({ play: false })} id='waveDisplay'>
                     <p className='version-title'>Version Title</p>
                     {this.state.loading && <> <ScaleLoader /> <h1>Building Waveform</h1></>}
-                </div>
-                <div id='wave-timeline' />
+                </motion.div>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} id='wave-timeline' />
                 <footer className='audio-footer'>
                     <div className='controls-container'>
                         <div className='time-controllers'>

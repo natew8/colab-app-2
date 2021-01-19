@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import WaveSurfer from 'wavesurfer.js'
-import TimelinePlugin from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min"
+import { motion } from 'framer-motion'
 import './waveform.css'
 
 function Waveform(props) {
@@ -17,9 +16,9 @@ function Waveform(props) {
                     <h2 className='song-artist'>{props.artist}</h2>
                 </div>
             </div>
-            <div id='waveDisplay-2'>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} id='waveDisplay-2'>
                 <h1>Please upload a new track file...</h1>
-            </div>
+            </motion.div>
             <footer className='audio-footer'>
                 <div className='controls-container'>
                     <div className='time-controllers'>

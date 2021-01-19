@@ -16,7 +16,7 @@ function Comments(props) {
     const [profilePic, setProfilePic] = useState('')
     //Comment Sates
     const [comments, setComments] = useState([])
-    const [comment, setComment] = useState('')
+    const [comment, setComment] = useState(undefined)
 
     useEffect(() => {
         axios.get(`/api/project/song/conversation/${props.convoId}`).then(res => {
@@ -38,10 +38,14 @@ function Comments(props) {
     }, [props.convoId, props.song_id], comment)
 
     function postComment() {
-        axios.post(`/api/project/song/conversation/newComment/${props.convoId}`, { comment }).then(newCom => {
-            setComment('')
-            setComments(newCom.data)
-        })
+        if (!comment) {
+            return null
+        } else {
+            axios.post(`/api/project/song/conversation/newComment/${props.convoId}`, { comment }).then(newCom => {
+                setComment('')
+                setComments(newCom.data)
+            })
+        }
 
     }
 

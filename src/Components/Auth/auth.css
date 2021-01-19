@@ -182,9 +182,6 @@ h1{
         border: none;
         height: 100vh;
     }
-    .login-logo{
-        /* margin-top: 1rem; */
-    }
     .link-to-login-top{
         display: flex;
     }
@@ -192,9 +189,23 @@ h1{
         display: none;
     }
     .login-container>h1{
-        margin-bottom: 0px;
+        margin-bottom: 10px;
     }
     .register-container>H1{
+        margin-bottom: 10px;
+    }
+}
+
+
+@media(max-width:370px){
+    button{
+        width: 15rem;
         margin-bottom: 0px;
+    }
+}
+
+@media(max-width:300px){
+    button{
+        width: 14rem;
     }
 }

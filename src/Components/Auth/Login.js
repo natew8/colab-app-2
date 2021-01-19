@@ -66,7 +66,7 @@ function Login(props) {
                         {emptyError && <h6 className='required-field'>*</h6>}
                         {emptyError && <p className='error-message'>{emptyError}</p>}
                         {error && <p className='error-message'>{error}</p>}
-                        <button type='submit' onClick={() => userLogin()}>Login</button>
+                        <button className='login-button-confirm' type='submit' onClick={() => userLogin()}>Login</button>
                     </form>
                     <h4 className='link-to-login'>
                         <Link className='link-to-login' style={{ textDecoration: 'none' }} to='/register'>

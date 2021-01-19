@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { ScaleLoader } from 'react-spinners'
 import WaveSurfer from 'wavesurfer.js'
 import TimelinePlugin from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min";
 import './waveform.css'
@@ -8,7 +9,8 @@ class Waveform extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            volume: .8
+            volume: .8,
+            loading: true
         }
     }
     componentDidMount() {
@@ -34,6 +36,10 @@ class Waveform extends Component {
                 primaryLabelInterval: 1,
             })]
         })
+        this.setState({
+            loading: false
+        })
+        this.wavesurfer.stop()
         this.setState({
             volume: this.wavesurfer.setVolume(.8)
         })
@@ -90,7 +96,7 @@ class Waveform extends Component {
                 </div>
                 <div onClick={() => this.setState({ play: false })} id='waveDisplay'>
                     <p className='version-title'>Version Title</p>
-                    {/* <p>{this.state.currentTime}</p> */}
+                    {this.state.loading && <> <ScaleLoader /> <h1>Building Waveform</h1></>}
                 </div>
                 <div id='wave-timeline' />
                 <footer className='audio-footer'>

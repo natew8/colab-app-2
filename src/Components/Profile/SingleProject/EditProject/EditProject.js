@@ -19,7 +19,6 @@ function EditProject(props) {
 
     useEffect(() => {
         axios.get(`/api/projects/project/${props.match.params.projectId}`).then(res => {
-            console.log(res.data)
             setProjectTitle(res.data.title)
             setProjectDeadline(res.data.deadline)
             setProjectCreated(res.data.created)

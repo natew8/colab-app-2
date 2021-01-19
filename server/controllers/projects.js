@@ -56,6 +56,7 @@ module.exports = {
 
     addUsersToProject: async (req, res) => {
         const db = req.app.get('db')
+        console.log(req.body)
         const { project_id } = req.params
         const { users_id, project_creator_id } = req.body
         const { id } = req.session.user

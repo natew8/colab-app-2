@@ -57,6 +57,12 @@
     border-radius: 3px 3px 0 0;
     z-index: 800;
 }
+#waveDisplay>h1{
+    position: absolute;
+    left: 42rem;
+    margin: 0px;
+    
+}
 #waveDisplay-2{
     margin-top: 5rem;
     position: relative;

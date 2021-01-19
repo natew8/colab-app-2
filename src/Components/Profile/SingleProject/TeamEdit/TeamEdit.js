@@ -8,6 +8,7 @@ function TeamEdit(props) {
     const [team, setTeam] = useState([])
     const [filter, setFilter] = useState('')
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(undefined)
     const project_id = props.match.params.projectId
     const project_creator_id = props.creatorId
 
@@ -27,8 +28,10 @@ function TeamEdit(props) {
     function addUser(users_id) {
         axios.post(`/api/project/invite/${project_id}`, { users_id, project_creator_id }).then(res => {
             setTeam([...team, res.data])
+        }).catch(err => {
+            setError(err.response.data)
         })
-        console.log(team)
+
     }
 
     function removeUser(users_id) {
@@ -41,7 +44,7 @@ function TeamEdit(props) {
             newArr.splice(targetI, 1)
             setTeam(newArr)
         }).catch(err => {
-            console.log(err.response.data)
+            setError(err.response.data)
         })
     }
 
@@ -100,7 +103,7 @@ function TeamEdit(props) {
                 <React.Fragment>
                     <div className='build-team-header'>
                         <h1 className='build-team-title'>Edit your team</h1>
-                        {/* <div className='team-project-line'></div> */}
+                        {error && <h4 className='team-edit-error-message'>{error}<h4 onClick={() => setError(undefined)}>X</h4></h4>}
                     </div>
                     <input onChange={(e) => handleFilter(e.target.value)} type='text' className='filter-users-input' placeholder='Search Users' />
                     <div className='team-build'>

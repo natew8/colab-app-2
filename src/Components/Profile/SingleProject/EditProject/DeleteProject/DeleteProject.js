@@ -9,11 +9,15 @@ function DeleteProject(props) {
     const project_id = props.match.params.projectId
     const project_creator_id = props.creatorId
     const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(undefined)
 
     function confirmDeleteProject() {
         setLoading(true)
         axios.delete(`/api/project/${project_id}/${project_creator_id}`).then(res => {
             props.history.push('/user/profile')
+        }).catch(err => {
+            setLoading(false)
+            setErrorMessage(err.response.data)
         })
     }
 
@@ -34,6 +38,7 @@ function DeleteProject(props) {
                         <button onClick={() => confirmDeleteProject()} className='confirm-button'>Delete</button>
                         <button onClick={() => props.setDeleteProject(false)} className='cancel-button'>Cancel</button>
                     </div>
+                    {errorMessage && <h1 className='project-delete-error-message'>{errorMessage}</h1>}
                 </motion.div >
             }
         </>

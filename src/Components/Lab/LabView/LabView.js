@@ -21,13 +21,13 @@ function LabView(props) {
             setArtist(res.data.artist)
             axios.get(`/api/project/song/versions/${props.match.params.song_id}`).then(res => {
                 if (!res.data.length) {
-                    setCurrentVersion('')
+                    setNoVersion(true)
                 } else {
                     setNoVersion(false)
                     setCurrentVersion(res.data[0].audio_file)
                 }
             }).catch(err => {
-                console.log(err.response.data)
+                console.log(err)
             })
         })
     }, [props.match.params.song_id])
@@ -44,10 +44,10 @@ function LabView(props) {
         })
     }
 
+    // function setView(bool) {
+    //     setConvoView(bool)
+    // }
 
-    function setView(bool) {
-        setConvoView(bool)
-    }
     return (
         <div className='lab-view'>
             {noVersion ?

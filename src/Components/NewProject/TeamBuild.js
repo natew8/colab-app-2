@@ -20,6 +20,7 @@ function TeamBuild(props) {
 
     function addUser(users_id) {
         axios.post(`/api/project/invite/${project_id}`, { users_id, project_creator_id }).then(res => {
+            console.log(res.data)
             setTeam([...team, res.data])
         })
         console.log(team)

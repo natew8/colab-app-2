@@ -30,12 +30,13 @@ function EditProfile(props) {
             setRole(res.data.role)
             setLoading(false)
         })
-    }, [editEmail, editRole, editUsername])
+    }, [])
 
 
     function updateUserInfo() {
         axios.put('/api/user/update', { email, username, role }).then((res) => {
             props.updateUser(res.data)
+            console.log(res.data)
             setUsername(res.data.username)
             setEmail(res.data.email)
             setRole(res.data.role)
@@ -164,7 +165,7 @@ function EditProfile(props) {
                                 </div>
                                 : <h4 className='edit-on-click' onClick={() => setEditRole(true)}>Edit</h4>}
                         </div>
-                        {editEmail || editUsername || editRole || profile_pic ?
+                        {editEmail || editUsername || editRole ?
                             <button
                                 onClick={() => updateUserInfo()}
                                 className='update-button'>

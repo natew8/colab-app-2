@@ -27,9 +27,14 @@ module.exports = {
     /*deletes a song from a project including all versions*/
     deleteSongFromProject: async (req, res) => {
         const db = req.app.get('db')
-        const { song_id } = req.params
-        const del = await db.songs.delete_song_from_project([song_id])
-        res.status(200).send(del)
+        const { song_id, project_creator_id } = req.params
+        const { id } = req.session.user
+        if (id !== +project_creator_id) {
+            res.status(403).send('You must be the project creator to remove a song from a project.')
+        } else {
+            const del = await db.songs.delete_song_from_project([song_id])
+            res.status(200).send(del)
+        }
     },
 
     addSongVersion: async (req, res) => {
@@ -47,9 +52,11 @@ module.exports = {
     getSongVersions: async (req, res) => {
         const db = req.app.get('db')
         const { song_id } = req.params
-        const versions = await db.songs.get_song_versions([song_id])
-        res.status(200).send(versions)
-
-
+        try {
+            const versions = await db.songs.get_song_versions([song_id])
+            res.status(200).send(versions)
+        } catch (err) {
+            res.status(500).send(err)
+        }
     }
 }

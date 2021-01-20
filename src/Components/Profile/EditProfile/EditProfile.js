@@ -37,7 +37,6 @@ function EditProfile(props) {
         axios.put('/api/user/update', { email, username, role }).then((res) => {
             props.updateUser(res.data)
             console.log(res.data)
-            setUsername(res.data.username)
             setEmail(res.data.email)
             setRole(res.data.role)
             setUpload(false)

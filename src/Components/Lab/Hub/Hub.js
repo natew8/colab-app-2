@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { motion } from 'framer-motion'
 import './hub.css'
 import Conversations from './Conversations/Conversations'
 import TeamDisplay from './TeamDisplay/TeamDisplay'
@@ -12,13 +13,13 @@ function Hub(props) {
 
     return (
         <div className='hub-view'>
-            <div id='view-outline'>
-                <TeamDisplay />
-                <div className='dividing-line'></div>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} id='view-outline'>
+                {/* <TeamDisplay /> */}
+                {/* <div className='dividing-line'></div> */}
                 <Conversations />
                 <div className='dividing-line'></div>
                 <Versions setVersion={props.setVersion} />
-            </div>
+            </motion.div>
         </div>
     )
 }

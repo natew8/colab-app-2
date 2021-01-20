@@ -17,7 +17,7 @@ function Waveform(props) {
                 </div>
             </div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} id='waveDisplay-2'>
-                <h1>Please upload a new track file...</h1>
+                <h1>Please upload a song file...</h1>
             </motion.div>
             <footer className='audio-footer'>
                 <div className='controls-container'>

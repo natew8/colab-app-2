@@ -90,6 +90,7 @@ function Versions(props) {
             <div onClick={() => props.setVersion(index)} key={index} color={alternatingBackground[index % 2 ? alternatingBackground[0] : alternatingBackground[1]]} className='version-container'>
                 <img src='https://colab-image-assets.s3-us-west-1.amazonaws.com/2470574-200.png' alt='wave' className='waveform-icon' />
                 <h4 className='version-list-title'>{ver.version_title}</h4>
+                <h4>{ver.date}</h4>
             </div>
         )
     })

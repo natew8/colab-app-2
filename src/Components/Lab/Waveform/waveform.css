@@ -99,10 +99,10 @@
     background-color: #071013;
     position: fixed;
     bottom: 0px;
-    left:11rem;
+    left:10.89rem;
     height: 2.6rem;
     width: 93%;
-    border-top: 2px solid #ff95059b;
+    border-top: 2px solid #c6c6c6;
 }
 .controls-container{
     position: absolute;
@@ -111,7 +111,8 @@
     bottom: .5rem;
     margin-right: auto;
     width: 50%;
-    border: 2px solid #ff95059b;
+    border-top: 2px solid #c6c6c6;
+    border-bottom: 2px solid #ff95059b;
     padding: .7rem 0px;
     border-radius: 50px;
     display: flex;
@@ -157,10 +158,10 @@
     z-index: 3000;
     height: 40px;
     margin-right: 1rem;
-    filter: brightness(.8);
+    filter: drop-shadow(0px 2px 5px #071013);
 }
 .play-button{
-    filter: brightness(.8);
+    filter: drop-shadow(0px 2px 5px #071013);
     position: relative;
     z-index: 3000;
     width: 36px;
@@ -168,7 +169,7 @@
     margin-right: 1rem;
 }
 .stop-button{
-    filter: brightness(.8);
+    filter: drop-shadow(0px 2px 5px #071013);
     height: 39px;
     z-index: 3000;
 }

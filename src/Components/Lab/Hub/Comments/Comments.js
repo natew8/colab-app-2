@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { motion } from 'framer-motion'
 import moment from 'moment'
 import './comments.css'
 
@@ -67,12 +68,8 @@ function Comments(props) {
         <div className='comments-container'>
             <div className='comments-header'>
                 <h4>{title}</h4>
-                <div className='comm-head-right'>
-                    <h4 className='comm-key'>Version: {song_version}</h4>
-                    <h4 className='comm-key'>Time: {time}</h4>
-                </div>
             </div>
-            <div className='main-comment-container'>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='main-comment-container'>
                 <img className={profilePic ? 'comm-profile-pic' : 'comm-default-pic'} src={profilePic ? profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='user' />
                 <div className='content-box'>
                     <div className='info-box'>
@@ -81,11 +78,11 @@ function Comments(props) {
                     </div>
                     <p className='body-body'>{body}</p>
                 </div>
-            </div>
+            </motion.div>
             <div className='message-line'></div>
-            <div className='comment-map-container'>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='comment-map-container'>
                 {commentsMapped}
-            </div>
+            </motion.div>
             <div className='message-input-footer'>
                 <img className={props.profilePic ? 'comment-compose-img' : 'comment-compose-default'} src={props.profilePic ? props.profilePic : 'https://colab-image-assets.s3-us-west-1.amazonaws.com/defProfilePic.png'} alt='user' />
                 <form onSubmit={() => postComment()} className='comment-form'>

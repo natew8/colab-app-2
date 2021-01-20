@@ -111,16 +111,20 @@ border-radius: 3px;
     box-shadow: none;
     text-align: right;
 }
+.exit-new-convo:hover{
+    cursor: pointer;
+}
 .new-con-form{
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 label{
     color: #071013;
     font-weight: 700;
     text-align: left;
-    margin-bottom: 2px;
+    margin-bottom: -20px;
     text-transform: uppercase;
 }
 

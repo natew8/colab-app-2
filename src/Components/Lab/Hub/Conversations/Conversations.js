@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import moment from 'moment'
 import Comments from '../Comments/Comments'
 import './conversations.css'
@@ -67,23 +68,19 @@ function Conversations(props) {
                     :
                     <>
                         {newConvo ?
-                            <form className='new-con-form'>
+                            <motion.form initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='new-con-form'>
                                 <label>Subject</label>
                                 <input onChange={(e) => setSubject(e.target.value)} type='text' placeholder='Subject Line' />
                                 <label>Song time</label>
                                 <input onChange={(e) => setTime(e.target.value)} maxLength='4' value={time} type='text' />
-                                <input list='version-list' />
-                                <select value={song_version} onChange={(e) => setSong_Version(e.target.value)} id='version-list'>
-                                    {''}
-                                </select>
                                 <label>body</label>
                                 <textarea onChange={(e) => setBody(e.target.value)} className='con-body-input' type='paragraph' placeholder='Message' />
                                 <button onClick={() => postConvo()} className='post-button'>Post</button>
-                            </form>
+                            </motion.form>
                             :
-                            <div className='mapped-conversations'>
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='mapped-conversations'>
                                 {mappedConvo}
-                            </div>
+                            </motion.div>
                         }
                     </>
                 }

@@ -18,9 +18,16 @@ function TeamBuild(props) {
         })
     }, [team])
 
+
+    useEffect(() => {
+        axios.get(`/api/project/team/${project_id}`).then(res => {
+            setTeam(res.data)
+        })
+    }, [])
+
+
     function addUser(users_id) {
         axios.post(`/api/project/invite/${project_id}`, { users_id, project_creator_id }).then(res => {
-            console.log(res.data)
             setTeam([...team, res.data])
         })
         console.log(team)
@@ -35,6 +42,8 @@ function TeamBuild(props) {
             })
             newArr.splice(targetI, 1)
             setTeam(newArr)
+        }).catch(err => {
+            console.log(err.response.data)
         })
     }
 

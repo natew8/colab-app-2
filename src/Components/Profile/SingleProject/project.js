@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { motion } from 'framer-motion'
+import moment from 'moment'
 import './project.css'
 import NewSong from './NewSong/NewSong'
 import EditProject from './EditProject/EditProject'
@@ -63,9 +64,9 @@ function Project(props) {
                         <div className='project-details-header'>
                             <h2 className='details-header-item'>Project Creator: {creator}</h2>
                             <div className='barrier-line'></div>
-                            <h2 className='details-header-item'>Deadline: {deadline}</h2>
+                            <h2 className='details-header-item'>Deadline: {moment(deadline).format('L')}</h2>
                             <div className='barrier-line'></div>
-                            <h2 className='details-header-item'>Created On: {created}</h2>
+                            <h2 className='details-header-item'>Created On: {moment(created).format('L')}</h2>
                         </div>
                     </motion.div>
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .5, duration: 1 }} className='new-mapped-song-container' >

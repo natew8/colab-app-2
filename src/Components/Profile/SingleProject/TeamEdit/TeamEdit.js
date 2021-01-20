@@ -22,6 +22,8 @@ function TeamEdit(props) {
     useEffect(() => {
         axios.get(`/api/project/team/${project_id}`).then(res => {
             setTeam(res.data)
+        }).catch(err => {
+            console.log(err.response.data)
         })
     }, [])
 
@@ -49,9 +51,7 @@ function TeamEdit(props) {
     }
 
     function handleFilter(filter) {
-        // console.log(filter)
         setFilter(filter)
-
     }
 
     const filteredUsers = users.filter((element, index) => {

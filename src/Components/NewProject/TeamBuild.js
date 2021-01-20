@@ -22,6 +22,8 @@ function TeamBuild(props) {
     useEffect(() => {
         axios.get(`/api/project/team/${project_id}`).then(res => {
             setTeam(res.data)
+        }).catch(err => {
+            console.log(err.response.data)
         })
     }, [])
 
@@ -29,8 +31,9 @@ function TeamBuild(props) {
     function addUser(users_id) {
         axios.post(`/api/project/invite/${project_id}`, { users_id, project_creator_id }).then(res => {
             setTeam([...team, res.data])
+        }).catch(err => {
+            console.log(err.response.data)
         })
-        console.log(team)
     }
 
     function removeUser(users_id) {

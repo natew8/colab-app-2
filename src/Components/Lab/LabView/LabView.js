@@ -14,6 +14,7 @@ function LabView(props) {
 
     const [noVersion, setNoVersion] = useState(true)
     const [currentVersion, setCurrentVersion] = useState('')
+    const [fileName, setFileName] = useState('')
 
     useEffect(() => {
         axios.get(`/api/project/song/${props.match.params.song_id}`).then(res => {
@@ -24,6 +25,7 @@ function LabView(props) {
                     setNoVersion(true)
                 } else {
                     setNoVersion(false)
+                    setFileName(res.data[0].version_title)
                     setCurrentVersion(res.data[0].audio_file)
                 }
             }).catch(err => {
@@ -40,6 +42,7 @@ function LabView(props) {
             } else {
                 setNoVersion(false)
                 setCurrentVersion(res.data[i].audio_file)
+                setFileName(res.data[i].version_title)
             }
         })
     }
@@ -53,7 +56,7 @@ function LabView(props) {
             {noVersion ?
                 <WaveForm2 version={currentVersion} artist={artist} title={title} />
                 :
-                <Waveform version={currentVersion} artist={artist} title={title} />
+                <Waveform versionTitle={fileName} version={currentVersion} artist={artist} title={title} />
             }
             <React.Fragment>
                 <React.Fragment>

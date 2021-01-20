@@ -96,7 +96,7 @@ class Waveform extends Component {
                     </div>
                 </div>
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} onClick={() => this.setState({ play: false })} id='waveDisplay'>
-                    <p className='version-title'>Version Title</p>
+                    <p className='version-title'>{this.props.versionTitle}</p>
                     {this.state.loading && <> <ScaleLoader /> <h1>Building Waveform</h1></>}
                 </motion.div>
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} id='wave-timeline' />

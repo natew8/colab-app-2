@@ -2,7 +2,7 @@
     position: relative;
     border: 2px solid #071013;
     border-radius: 3px;
-    width: 20rem;
+    width: 22rem;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -24,7 +24,7 @@
 .version-loading-container{
     padding: .6rem;
     margin: 0px;
-    height: 21.1rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@
 .version-list-container{
     padding: .6rem;
     margin: 0px;
-    height: 21.1rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }

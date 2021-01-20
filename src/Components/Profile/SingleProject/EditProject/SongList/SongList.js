@@ -51,7 +51,7 @@ function SongList(props) {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='edit-mapped-songList'>
             {addSong ?
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-                    <h1>Click<h1>Add Song</h1> below to add a song to this project.</h1>
+                    <h1>No songs in project<br></br>Click<h1>Add Song</h1> below to add a song to this project.</h1>
                 </motion.div>
                 :
                 <>

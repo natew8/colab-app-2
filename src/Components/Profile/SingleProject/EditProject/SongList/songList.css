@@ -6,14 +6,15 @@
     overflow-y: scroll;
 }
 .edit-mapped-songList>div{
-    margin-top: 13rem;
-    text-align: left;
+    /* margin-top: 13rem; */
+    /* text-align: left; */
     padding: 0px .6rem;
 }
 .edit-mapped-songList>div>h1{
     font-size: 1rem;
     color: #c6c6c6;
     margin: 0px;
+    margin-top: 1rem;
     padding: 0px;
 }
 .edit-mapped-songList>div>h1>h1{

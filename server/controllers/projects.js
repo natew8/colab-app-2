@@ -56,7 +56,6 @@ module.exports = {
 
     addUsersToProject: async (req, res) => {
         const db = req.app.get('db')
-        console.log(req.body)
         const { project_id } = req.params
         const { users_id, project_creator_id } = req.body
         const { id } = req.session.user
@@ -64,6 +63,7 @@ module.exports = {
             return res.status(403).send('You must be the project creator to add users to a project.')
         } else {
             const [teamProject] = await db.projects.add_users_to_project([users_id, project_id])
+            console.log(teamProject)
             res.status(200).send(teamProject)
         }
     },

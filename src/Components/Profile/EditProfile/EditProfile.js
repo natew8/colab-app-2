@@ -156,7 +156,19 @@ function EditProfile(props) {
                             {!editRole ?
                                 <h3 className='current-info'>{role}</h3>
                                 :
-                                <input onChange={(e) => setRole(e.target.value)} className='edit-info-input' value={role} type='text' placeholder={role} />
+                                <>
+                                    {/* <input onChange={(e) => setRole(e.target.value)} className='edit-info-input' value={role} type='text' placeholder={role} /> */}
+                                    <select id='edit-select-input-field' onChange={(e) => setRole(e.target.value)}>
+                                        <option value={role}>{role}</option>
+                                        {/* <option value='Producer'>Producer</option> */}
+                                        <option value='Songwriter'>Songwriter</option>
+                                        <option value='Producer'>Producer</option>
+                                        <option value='Mixing/Mastering'>Mixing/Mastering</option>
+                                        <option value='Management'>Management</option>
+                                        <option value='Artist'>Artist</option>
+                                        <option value='Other'>Other</option>
+                                    </select>
+                                </>
                             }
                             {editRole ?
                                 <div className='input-and-exit'>

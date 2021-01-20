@@ -98,7 +98,7 @@ function Register(props) {
                         {passError && <h6 className='required-field'>*</h6>}
                         <select id='select-input-field' onChange={(e) => handleRole(e.target.value)}>
                             <option value='' disabled selected >Please Select Interest...</option>
-                            <option value='Producer'>Producer</option>
+                            {/* <option value='Singer'>Producer</option> */}
                             <option value='Songwriter'>Songwriter</option>
                             <option value='Producer'>Producer</option>
                             <option value='Mixing/Mastering'>Mixing/Mastering</option>

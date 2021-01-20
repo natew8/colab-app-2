@@ -10,7 +10,8 @@
 }
 
 .main-header-logo{
-    margin-left:1.7rem;
+    margin-left:auto;
+    margin-right: auto;
     position: relative;
     height: 55px;
     filter:drop-shadow(2px 2px 5px #071013)

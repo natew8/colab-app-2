@@ -16,7 +16,7 @@ function Header(props) {
     return (
         <header className='colab-header'>
             <img className='main-header-logo' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Asolo.png' alt='Logo' />
-            <img className='main-header-logo-right' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Notes.png' alt='Logo' />
+            {/* <img className='main-header-logo-right' src='https://colab-image-assets.s3-us-west-1.amazonaws.com/Notes.png' alt='Logo' /> */}
             {/* <div className='main-user-info'>
                 <h2 >
                     {props.username}

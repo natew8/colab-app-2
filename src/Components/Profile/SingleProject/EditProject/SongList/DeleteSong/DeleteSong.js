@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import axios from 'axios'
 import './deleteSong.css'
 
 function DeleteSong(props) {
+    const [errorMessage, setErrorMessage] = useState(undefined)
     const song_id = props.id
 
     function confirmRemove() {
@@ -12,7 +13,7 @@ function DeleteSong(props) {
             console.log(res)
             props.setDeleteSong(false)
         }).catch(err => {
-            console.log(err.response.data)
+            setErrorMessage(err.response.data)
         })
     }
 
@@ -25,6 +26,7 @@ function DeleteSong(props) {
                 <button onClick={() => confirmRemove()} className='confirm-button'>Delete</button>
                 <button onClick={() => props.setDeleteSong(false)} className='cancel-button'>Cancel</button>
             </div>
+            {errorMessage && <h1 id='song-delete-error-message'>{errorMessage}</h1>}
         </motion.div>
     )
 }

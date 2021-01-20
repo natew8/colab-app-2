@@ -28,3 +28,8 @@ h3>h1{
     width: 5rem;
     margin-right: .6rem;
 }
+
+#song-delete-error-message{
+    margin: 0px;
+    color: #d7263d;
+}

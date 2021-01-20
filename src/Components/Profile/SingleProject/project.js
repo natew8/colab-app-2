@@ -62,13 +62,10 @@ function Project(props) {
                         <div className='team-project-line'></div>
                         <div className='project-details-header'>
                             <h2 className='details-header-item'>Project Creator: {creator}</h2>
-                            {/* <h2 className='details-header-item'>Project Creator: Blah</h2> */}
                             <div className='barrier-line'></div>
                             <h2 className='details-header-item'>Deadline: {deadline}</h2>
-                            {/* <h2 className='details-header-item'>Deadline: 02/29/00</h2> */}
                             <div className='barrier-line'></div>
                             <h2 className='details-header-item'>Created On: {created}</h2>
-                            {/* <h2 className='details-header-item'>Created On: 04/28/2020 </h2> */}
                         </div>
                     </motion.div>
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .5, duration: 1 }} className='new-mapped-song-container' >
@@ -80,7 +77,7 @@ function Project(props) {
                     </motion.div>
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .75, duration: 1 }} className='project-footer'>
                         <h4 onClick={() => setNewSong(!newSong)} className='footer-nav-item-2'>Add Song</h4>
-                        <h4 onClick={() => setEditProject(true)} className='footer-nav-item'>Edit Project Info</h4>
+                        <h4 onClick={() => setEditProject(true)} className='footer-nav-item'>View Project Details</h4>
                     </motion.div>
                 </div >
             }

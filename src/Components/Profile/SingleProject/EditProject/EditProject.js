@@ -7,6 +7,7 @@ import TeamEdit from '../TeamEdit/TeamEdit'
 import './editProject.css'
 import SongList from './SongList/SongList'
 import DeleteProject from './DeleteProject/DeleteProject'
+import EditInfo from './EditInfo/EditInfo'
 
 function EditProject(props) {
     const [projectTitle, setProjectTitle] = useState('')
@@ -15,10 +16,12 @@ function EditProject(props) {
     const [projectCreator, setProjectCreator] = useState('')
     const [projectCreatorId, setProjectCreatorId] = useState(0)
     const [deleteProject, setDeleteProject] = useState(false)
+    const [edit, setEdit] = useState(false)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         axios.get(`/api/projects/project/${props.match.params.projectId}`).then(res => {
+            console.log('hey')
             setProjectTitle(res.data.title)
             setProjectDeadline(res.data.deadline)
             setProjectCreated(res.data.created)
@@ -26,7 +29,7 @@ function EditProject(props) {
             setProjectCreatorId(res.data.project_creator_id)
             setLoading(false)
         })
-    })
+    }, [edit])
 
 
     function goNewSong() {
@@ -52,13 +55,19 @@ function EditProject(props) {
                             <div className='loading-dot-3'></div>
                         </div>
                         :
+
                         <>
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='project-info-box'>
-                                <h1>{projectTitle}</h1>
-                                <h2>Created By:<h2>{projectCreator}</h2></h2>
-                                <h2>Project Deadline:<h2>{moment(projectDeadline).format('L')}</h2></h2>
-                                <h2>Created On:<h2>{moment(projectCreated).format('L')}</h2></h2>
-                            </motion.div>
+                            {edit ?
+                                <EditInfo creatorId={projectCreatorId} title={projectTitle} deadline={projectDeadline} setEdit={setEdit} />
+                                :
+                                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='project-info-box'>
+                                    <h1>{projectTitle}</h1>
+                                    <h2>Created By:<h2>{projectCreator}</h2></h2>
+                                    <h2>Project Deadline:<h2>{moment(projectDeadline).format('L')}</h2></h2>
+                                    <h2>Created On:<h2>{moment(projectCreated).format('L')}</h2></h2>
+                                    <h6 onClick={() => setEdit(true)}>Edit</h6>
+                                </motion.div>
+                            }
                             {/* <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='edit-project-line'></motion.div> */}
                             <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='song-list-title'>Song List</motion.h1>
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className='edit-song-window'>

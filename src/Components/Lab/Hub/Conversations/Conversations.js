@@ -94,6 +94,7 @@ function Conversations(props) {
                     }
                 </div>
             </div>
+            <div className='dividing-line'></div>
             <Comments convoId={convoId} />
         </React.Fragment>
 

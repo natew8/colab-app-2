@@ -61,6 +61,7 @@
     border-radius: 5px;
     border: 1px solid #cfcfcf;
     z-index: 2;
+    transition: all .25s;
 }
 .song-container:hover{
     cursor: pointer;

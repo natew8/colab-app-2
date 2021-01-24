@@ -48,6 +48,7 @@ function Login(props) {
                     initial={{ x: '100vw' }}
                     animate={{ x: 0 }}
                     transition={{ type: 'tween', duration: .75 }}
+                    exit
                     className='login-container'>
                     <p className='back-arrow'>
                         <Link style={{ textDecoration: 'none' }} to='/'> &larr;</Link>

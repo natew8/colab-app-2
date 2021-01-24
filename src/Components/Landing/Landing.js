@@ -20,6 +20,10 @@ const logoVariants = {
         transition: {
             duration: 1
         }
+    },
+    exit: {
+        x: '-100vw',
+        transition: { ease: 'easeInOut' }
     }
 }
 

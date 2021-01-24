@@ -1,65 +1,64 @@
-.colab-header{
-    background-color:#11323e9b ;
-    position: relative;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 4rem;
+.colab-header {
+  background-color: #11323e9b;
+  position: relative;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
 }
 
-.main-header-logo{
-    margin-left:auto;
-    margin-right: auto;
-    position: relative;
-    height: 55px;
-    filter:drop-shadow(2px 2px 5px #071013)
+.main-header-logo {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  height: 55px;
+  filter: drop-shadow(2px 2px 5px #071013);
 }
-.main-header-logo-right{
-    margin-right:1.7rem;
-    position: relative;
-    height: 55px;
-    filter:drop-shadow(2px 2px 5px #071013)
-}
-
-.main-user-info{
-    display: flex;
-}
-.main-profile-pic{
-    width: 60px;
-    height: 60px;
-    margin-left: 10px;
-    margin-right: 2.3rem;
-    margin-top: 3px;
-    border-radius: 50%;
+.main-header-logo-right {
+  margin-right: 1.7rem;
+  position: relative;
+  height: 55px;
+  filter: drop-shadow(2px 2px 5px #071013);
 }
 
-.default-pic{
-    width: 60px;
-    height: 60px;
-    margin-left: 10px;
-    margin-right: 2.3rem;
-    margin-top: 3px;
-    border: 2px solid #ff9505;
-    border-radius: 50%;
-    
+.main-user-info {
+  display: flex;
 }
-.main-user-info>h2{
-    color: #f4f6f6;
-    font-family: Roboto Condensed;
-    font-weight: 300;
-    text-transform: none;
+.main-profile-pic {
+  width: 60px;
+  height: 60px;
+  margin-left: 10px;
+  margin-right: 2.3rem;
+  margin-top: 3px;
+  border-radius: 50%;
 }
 
-@media(max-width:770px){
-    .colab-header{
-        display: none;
-    }
-    .main-header-logo{
-        height: 25px;
-    }
-    .main-header-logo-right{
-        display: none;
-    }
+.default-pic {
+  width: 60px;
+  height: 60px;
+  margin-left: 10px;
+  margin-right: 2.3rem;
+  margin-top: 3px;
+  border: 2px solid #ff9505;
+  border-radius: 50%;
+}
+.main-user-info > h2 {
+  color: #f4f6f6;
+  font-family: Roboto Condensed;
+  font-weight: 300;
+  text-transform: none;
+}
+
+@media (max-width: 770px) {
+  .colab-header {
+    display: none;
+  }
+  .main-header-logo {
+    height: 25px;
+  }
+  .main-header-logo-right {
+    display: none;
+  }
 }
